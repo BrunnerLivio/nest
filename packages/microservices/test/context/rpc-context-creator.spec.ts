@@ -11,7 +11,6 @@ import { PipesConsumer } from '../../../core/pipes/pipes-consumer';
 import { PipesContextCreator } from '../../../core/pipes/pipes-context-creator';
 import { RpcException } from '../../index';
 import {
-  Component,
   Guard,
   Injectable,
   UseGuards,
@@ -45,7 +44,7 @@ describe('RpcContextCreator', () => {
   let module: string;
 
   @UseGuards(TestGuard)
-  @Component()
+  @Injectable()
   class Test {
     @UsePipes(new TestPipe())
     test(data: string) {

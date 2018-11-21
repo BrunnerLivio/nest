@@ -88,7 +88,7 @@ export class DependenciesScanner {
 
     for (const [token, { metatype }] of modules) {
       await this.reflectRelatedModules(metatype, token, metatype.name);
-      this.reflectComponents(metatype, token);
+      this.reflectProviders(metatype, token);
       this.reflectControllers(metatype, token);
       this.reflectExports(metatype, token);
     }
@@ -115,27 +115,27 @@ export class DependenciesScanner {
     }
   }
 
-  public reflectComponents(module: Type<any>, token: string) {
-    const components = [
+  public reflectProviders(module: Type<any>, token: string) {
+    const providers = [
       ...this.reflectMetadata(module, METADATA.COMPONENTS),
       ...this.container.getDynamicMetadataByToken(
         token,
-        METADATA.COMPONENTS as 'components',
+        METADATA.COMPONENTS as 'providers',
       ),
       ...this.container.getDynamicMetadataByToken(
         token,
         METADATA.PROVIDERS as 'providers',
       ),
     ];
-    components.forEach(component => {
-      this.storeComponent(component, token);
-      this.reflectComponentMetadata(component, token);
-      this.reflectDynamicMetadata(component, token);
+    providers.forEach(provider => {
+      this.storeProvider(provider, token);
+      this.reflectProviderMetadata(provider, token);
+      this.reflectDynamicMetadata(provider, token);
     });
   }
 
-  public reflectComponentMetadata(component: Type<Injectable>, token: string) {
-    this.reflectGatewaysMiddleware(component, token);
+  public reflectProviderMetadata(provider: Type<Injectable>, token: string) {
+    this.reflectGatewaysMiddleware(provider, token);
   }
 
   public reflectControllers(module: Type<any>, token: string) {
@@ -171,26 +171,26 @@ export class DependenciesScanner {
         METADATA.EXPORTS as 'exports',
       ),
     ];
-    exports.forEach(exportedComponent =>
-      this.storeExportedComponent(exportedComponent, token),
+    exports.forEach(exportedProvider =>
+      this.storeExportedProvider(exportedProvider, token),
     );
   }
 
-  public reflectGatewaysMiddleware(component: Type<Injectable>, token: string) {
-    const middleware = this.reflectMetadata(component, GATEWAY_MIDDLEWARES);
-    middleware.forEach(ware => this.storeComponent(ware, token));
+  public reflectGatewaysMiddleware(provider: Type<Injectable>, token: string) {
+    const middleware = this.reflectMetadata(provider, GATEWAY_MIDDLEWARES);
+    middleware.forEach(ware => this.storeProvider(ware, token));
   }
 
   public reflectInjectables(
-    component: Type<Injectable>,
+    provider: Type<Injectable>,
     token: string,
     metadataKey: string,
   ) {
-    const controllerInjectables = this.reflectMetadata(component, metadataKey);
+    const controllerInjectables = this.reflectMetadata(provider, metadataKey);
     const methodsInjectables = this.metadataScanner.scanFromPrototype(
       null,
-      component.prototype,
-      this.reflectKeyMetadata.bind(this, component, metadataKey),
+      provider.prototype,
+      this.reflectKeyMetadata.bind(this, provider, metadataKey),
     );
     const flattenMethodsInjectables = methodsInjectables.reduce<any[]>(
       (a: any[], b) => a.concat(b),
@@ -207,14 +207,14 @@ export class DependenciesScanner {
   }
 
   public reflectParamInjectables(
-    component: Type<Injectable>,
+    provider: Type<Injectable>,
     token: string,
     metadataKey: string,
   ) {
     const paramsMetadata = this.metadataScanner.scanFromPrototype(
       null,
-      component.prototype,
-      method => Reflect.getMetadata(metadataKey, component, method),
+      provider.prototype,
+      method => Reflect.getMetadata(metadataKey, provider, method),
     );
     const flatten = arr => arr.reduce((a, b) => a.concat(b), []);
     const paramsInjectables = flatten(paramsMetadata).map(param =>
@@ -226,11 +226,11 @@ export class DependenciesScanner {
   }
 
   public reflectKeyMetadata(
-    component: Type<Injectable>,
+    provider: Type<Injectable>,
     key: string,
     method: string,
   ) {
-    let prototype = component.prototype;
+    let prototype = provider.prototype;
     do {
       const descriptor = Reflect.getOwnPropertyDescriptor(prototype, method);
       if (!descriptor) {
@@ -260,17 +260,17 @@ export class DependenciesScanner {
     await this.container.addRelatedModule(related, token);
   }
 
-  public storeComponent(component, token: string) {
-    const isCustomProvider = component && !isNil(component.provide);
+  public storeProvider(provider, token: string) {
+    const isCustomProvider = provider && !isNil(provider.provide);
     if (!isCustomProvider) {
-      return this.container.addComponent(component, token);
+      return this.container.addProvider(provider, token);
     }
     const applyProvidersMap = this.getApplyProvidersMap();
     const providersKeys = Object.keys(applyProvidersMap);
-    const type = component.provide;
+    const type = provider.provide;
 
     if (!providersKeys.includes(type)) {
-      return this.container.addComponent(component, token);
+      return this.container.addProvider(provider, token);
     }
     const providerToken = randomStringGenerator();
     this.applicationProvidersApplyMap.push({
@@ -278,24 +278,24 @@ export class DependenciesScanner {
       moduleKey: token,
       providerKey: providerToken,
     });
-    this.container.addComponent(
+    this.container.addProvider(
       {
-        ...component,
+        ...provider,
         provide: providerToken,
       },
       token,
     );
   }
 
-  public storeInjectable(component: Type<Injectable>, token: string) {
-    this.container.addInjectable(component, token);
+  public storeInjectable(provider: Type<Injectable>, token: string) {
+    this.container.addInjectable(provider, token);
   }
 
-  public storeExportedComponent(
-    exportedComponent: Type<Injectable>,
+  public storeExportedProvider(
+    exportedProvider: Type<Injectable>,
     token: string,
   ) {
-    this.container.addExportedComponent(exportedComponent, token);
+    this.container.addExportedProvider(exportedProvider, token);
   }
 
   public storeRoute(route: Type<Controller>, token: string) {
@@ -311,8 +311,8 @@ export class DependenciesScanner {
     this.applicationProvidersApplyMap.forEach(
       ({ moduleKey, providerKey, type }) => {
         const modules = this.container.getModules();
-        const { components } = modules.get(moduleKey);
-        const { instance } = components.get(providerKey);
+        const { providers } = modules.get(moduleKey);
+        const { instance } = providers.get(providerKey);
 
         applyProvidersMap[type](instance);
       },

@@ -51,9 +51,9 @@ export class MicroservicesModule {
       throw new RuntimeException();
     }
     const modules = container.getModules();
-    modules.forEach(({ routes, components }) => {
+    modules.forEach(({ routes, providers }) => {
       this.bindClients(routes);
-      this.bindClients(components);
+      this.bindClients(providers);
     });
   }
 

@@ -117,12 +117,12 @@ export class Injector {
     });
   }
 
-  public async loadInstanceOfComponent(
+  public async loadInstanceOfProvider(
     wrapper: InstanceWrapper<Injectable>,
     module: Module,
   ) {
-    const components = module.components;
-    await this.loadInstance<Injectable>(wrapper, components, module);
+    const providers = module.providers;
+    await this.loadInstance<Injectable>(wrapper, providers, module);
   }
 
   public applyDoneHook<T>(wrapper: InstanceWrapper<T>): () => void {
@@ -230,7 +230,7 @@ export class Injector {
       throw new UndefinedDependencyException(wrapper.name, dependencyContext, module);
     }
     const token = this.resolveParamToken(wrapper, param);
-    return this.resolveComponentInstance<T>(
+    return this.resolveProviderInstance<T>(
       module,
       isFunction(token) ? (token as Type<any>).name : token,
       dependencyContext,
@@ -249,21 +249,21 @@ export class Injector {
     return param.forwardRef();
   }
 
-  public async resolveComponentInstance<T>(
+  public async resolveProviderInstance<T>(
     module: Module,
     name: any,
     dependencyContext: InjectorDependencyContext,
     wrapper: InstanceWrapper<T>,
   ) {
-    const components = module.components;
-    const instanceWrapper = await this.lookupComponent(
-      components,
+    const providers = module.providers;
+    const instanceWrapper = await this.lookupProvider(
+      providers,
       module,
       { ...dependencyContext, name },
       wrapper,
     );
     if (!instanceWrapper.isResolved && !instanceWrapper.forwardRef) {
-      await this.loadInstanceOfComponent(instanceWrapper, module);
+      await this.loadInstanceOfProvider(instanceWrapper, module);
     }
     if (instanceWrapper.async) {
       instanceWrapper.instance = await instanceWrapper.instance;
@@ -271,24 +271,24 @@ export class Injector {
     return instanceWrapper;
   }
 
-  public async lookupComponent<T = any>(
-    components: Map<string, any>,
+  public async lookupProvider<T = any>(
+    providers: Map<string, any>,
     module: Module,
     dependencyContext: InjectorDependencyContext,
     wrapper: InstanceWrapper<T>,
   ) {
     const { name } = dependencyContext;
     const scanInExports = () =>
-      this.lookupComponentInExports(dependencyContext, module, wrapper);
-    return components.has(name) ? components.get(name) : scanInExports();
+      this.lookupProviderInExports(dependencyContext, module, wrapper);
+    return providers.has(name) ? providers.get(name) : scanInExports();
   }
 
-  public async lookupComponentInExports<T = any>(
+  public async lookupProviderInExports<T = any>(
     dependencyContext: InjectorDependencyContext,
     module: Module,
     wrapper: InstanceWrapper<T>,
   ) {
-    const instanceWrapper = await this.lookupComponentInRelatedModules(
+    const instanceWrapper = await this.lookupProviderInRelatedModules(
       module,
       dependencyContext.name,
     );
@@ -298,12 +298,12 @@ export class Injector {
     return instanceWrapper;
   }
 
-  public async lookupComponentInRelatedModules(
+  public async lookupProviderInRelatedModules(
     module: Module,
     name: any,
     moduleRegistry = [],
   ) {
-    let componentRef = null;
+    let providerRef = null;
 
     const relatedModules: Set<Module> = module.relatedModules || new Set();
     const children = [...relatedModules.values()].filter(item => item);
@@ -312,9 +312,9 @@ export class Injector {
         continue;
       }
       moduleRegistry.push(relatedModule.id);
-      const { components, exports } = relatedModule;
-      if (!exports.has(name) || !components.has(name)) {
-        const instanceRef = await this.lookupComponentInRelatedModules(
+      const { providers, exports } = relatedModule;
+      if (!exports.has(name) || !providers.has(name)) {
+        const instanceRef = await this.lookupProviderInRelatedModules(
           relatedModule,
           name,
           moduleRegistry,
@@ -324,13 +324,13 @@ export class Injector {
         }
         continue;
       }
-      componentRef = components.get(name);
-      if (!componentRef.isResolved && !componentRef.forwardRef) {
-        await this.loadInstanceOfComponent(componentRef, relatedModule);
+      providerRef = providers.get(name);
+      if (!providerRef.isResolved && !providerRef.forwardRef) {
+        await this.loadInstanceOfProvider(providerRef, relatedModule);
         break;
       }
     }
-    return componentRef;
+    return providerRef;
   }
 
   public async resolveProperties<T>(

@@ -10,7 +10,6 @@ import { PipesConsumer } from '../../../core/pipes/pipes-consumer';
 import { PipesContextCreator } from '../../../core/pipes/pipes-context-creator';
 import { WsException } from '../../index';
 import {
-  Component,
   Guard,
   Injectable,
   UseGuards,
@@ -44,7 +43,7 @@ describe('WsContextCreator', () => {
   let module: string;
 
   @UseGuards(TestGuard)
-  @Component()
+  @Injectable()
   class Test {
     @UsePipes(new TestPipe())
     test(client: string, data: number) {

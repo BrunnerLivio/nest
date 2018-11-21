@@ -11,12 +11,12 @@ export function Injectable(): ClassDecorator {
 
 /**
  * @deprecated
- * Defines the Component. The component can inject dependencies through constructor.
+ * Defines the Provider. The provider can inject dependencies through constructor.
  * Those dependencies have to belong to the same module.
  */
-export function Component(): ClassDecorator {
+export function Provider(): ClassDecorator {
   deprecate(
-    'The @Component() decorator is deprecated and will be removed within next major release. Use @Injectable() instead.',
+    'The @Injectable() decorator is deprecated and will be removed within next major release. Use @Injectable() instead.',
   );
   return (target: object) => {};
 }

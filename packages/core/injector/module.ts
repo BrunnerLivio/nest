@@ -24,18 +24,18 @@ import { ModuleRef } from './module-ref';
 import { ModulesContainer } from './modules-container';
 import { HTTP_SERVER_REF } from './tokens';
 
-export interface CustomComponent {
+export interface CustomProvider {
   provide: any;
   name: string;
 }
 export type OpaqueToken = string | symbol | object | Type<any>;
-export type CustomClass = CustomComponent & { useClass: Type<any> };
-export type CustomFactory = CustomComponent & {
+export type CustomClass = CustomProvider & { useClass: Type<any> };
+export type CustomFactory = CustomProvider & {
   useFactory: (...args) => any;
   inject?: OpaqueToken[];
 };
-export type CustomValue = CustomComponent & { useValue: any };
-export type ComponentMetatype =
+export type CustomValue = CustomProvider & { useValue: any };
+export type ProviderMetatype =
   | Type<Injectable>
   | CustomFactory
   | CustomValue
@@ -44,7 +44,7 @@ export type ComponentMetatype =
 export class Module {
   private readonly _id: string;
   private readonly _relatedModules = new Set<Module>();
-  private readonly _components = new Map<any, InstanceWrapper<Injectable>>();
+  private readonly _providers = new Map<any, InstanceWrapper<Injectable>>();
   private readonly _injectables = new Map<any, InstanceWrapper<Injectable>>();
   private readonly _routes = new Map<string, InstanceWrapper<Controller>>();
   private readonly _exports = new Set<string>();
@@ -70,8 +70,8 @@ export class Module {
     return this._relatedModules;
   }
 
-  get components(): Map<string, InstanceWrapper<Injectable>> {
-    return this._components;
+  get providers(): Map<string, InstanceWrapper<Injectable>> {
+    return this._providers;
   }
 
   get injectables(): Map<string, InstanceWrapper<Injectable>> {
@@ -87,10 +87,10 @@ export class Module {
   }
 
   get instance(): NestModule {
-    if (!this._components.has(this._metatype.name)) {
+    if (!this._providers.has(this._metatype.name)) {
       throw new RuntimeException();
     }
-    const module = this._components.get(this._metatype.name);
+    const module = this._providers.get(this._metatype.name);
     return module.instance as NestModule;
   }
 
@@ -99,7 +99,7 @@ export class Module {
   }
 
   public addCoreInjectables(container: NestContainer) {
-    this.addModuleAsComponent();
+    this.addModuleAsProvider();
     this.addModuleRef();
     this.addReflector(container.getReflector());
     this.addApplicationRef(container.getApplicationRef());
@@ -110,7 +110,7 @@ export class Module {
 
   public addModuleRef() {
     const moduleRef = this.createModuleRefMetatype();
-    this._components.set(ModuleRef.name, {
+    this._providers.set(ModuleRef.name, {
       name: ModuleRef.name,
       metatype: ModuleRef as any,
       isResolved: true,
@@ -118,8 +118,8 @@ export class Module {
     });
   }
 
-  public addModuleAsComponent() {
-    this._components.set(this._metatype.name, {
+  public addModuleAsProvider() {
+    this._providers.set(this._metatype.name, {
       name: this._metatype.name,
       metatype: this._metatype,
       isResolved: false,
@@ -128,7 +128,7 @@ export class Module {
   }
 
   public addReflector(reflector: Reflector) {
-    this._components.set(Reflector.name, {
+    this._providers.set(Reflector.name, {
       name: Reflector.name,
       metatype: Reflector,
       isResolved: true,
@@ -137,7 +137,7 @@ export class Module {
   }
 
   public addApplicationRef(applicationRef: any) {
-    this._components.set(HTTP_SERVER_REF, {
+    this._providers.set(HTTP_SERVER_REF, {
       name: HTTP_SERVER_REF,
       metatype: {} as any,
       isResolved: true,
@@ -148,7 +148,7 @@ export class Module {
   public addExternalContextCreator(
     externalContextCreator: ExternalContextCreator,
   ) {
-    this._components.set(ExternalContextCreator.name, {
+    this._providers.set(ExternalContextCreator.name, {
       name: ExternalContextCreator.name,
       metatype: ExternalContextCreator,
       isResolved: true,
@@ -157,7 +157,7 @@ export class Module {
   }
 
   public addModulesContainer(modulesContainer: ModulesContainer) {
-    this._components.set(ModulesContainer.name, {
+    this._providers.set(ModulesContainer.name, {
       name: ModulesContainer.name,
       metatype: ModulesContainer,
       isResolved: true,
@@ -166,7 +166,7 @@ export class Module {
   }
 
   public addApplicationRefHost(applicationRefHost: ApplicationReferenceHost) {
-    this._components.set(ApplicationReferenceHost.name, {
+    this._providers.set(ApplicationReferenceHost.name, {
       name: ApplicationReferenceHost.name,
       metatype: ApplicationReferenceHost,
       isResolved: true,
@@ -186,63 +186,63 @@ export class Module {
     });
   }
 
-  public addComponent(component: ComponentMetatype): string {
-    if (this.isCustomProvider(component)) {
-      return this.addCustomProvider(component, this._components);
+  public addProvider(provider: ProviderMetatype): string {
+    if (this.isCustomProvider(provider)) {
+      return this.addCustomProvider(provider, this._providers);
     }
-    this._components.set((component as Type<Injectable>).name, {
-      name: (component as Type<Injectable>).name,
-      metatype: component as Type<Injectable>,
+    this._providers.set((provider as Type<Injectable>).name, {
+      name: (provider as Type<Injectable>).name,
+      metatype: provider as Type<Injectable>,
       instance: null,
       isResolved: false,
     });
-    return (component as Type<Injectable>).name;
+    return (provider as Type<Injectable>).name;
   }
 
   public isCustomProvider(
-    component: ComponentMetatype,
-  ): component is CustomClass | CustomFactory | CustomValue {
-    return !isNil((component as CustomComponent).provide);
+    provider: ProviderMetatype,
+  ): provider is CustomClass | CustomFactory | CustomValue {
+    return !isNil((provider as CustomProvider).provide);
   }
 
   public addCustomProvider(
-    component: CustomFactory | CustomValue | CustomClass,
+    provider: CustomFactory | CustomValue | CustomClass,
     collection: Map<string, any>,
   ): string {
-    const { provide } = component;
+    const { provide } = provider;
     const name = isFunction(provide) ? provide.name : provide;
-    const componentWithName = {
-      ...component,
+    const providerWithName = {
+      ...provider,
       name,
     };
-    if (this.isCustomClass(componentWithName))
-      this.addCustomClass(componentWithName, collection);
-    else if (this.isCustomValue(componentWithName))
-      this.addCustomValue(componentWithName, collection);
-    else if (this.isCustomFactory(componentWithName))
-      this.addCustomFactory(componentWithName, collection);
+    if (this.isCustomClass(providerWithName))
+      this.addCustomClass(providerWithName, collection);
+    else if (this.isCustomValue(providerWithName))
+      this.addCustomValue(providerWithName, collection);
+    else if (this.isCustomFactory(providerWithName))
+      this.addCustomFactory(providerWithName, collection);
 
     return name;
   }
 
-  public isCustomClass(component): component is CustomClass {
-    return !isUndefined((component as CustomClass).useClass);
+  public isCustomClass(provider): provider is CustomClass {
+    return !isUndefined((provider as CustomClass).useClass);
   }
 
-  public isCustomValue(component): component is CustomValue {
-    return !isUndefined((component as CustomValue).useValue);
+  public isCustomValue(provider): provider is CustomValue {
+    return !isUndefined((provider as CustomValue).useValue);
   }
 
-  public isCustomFactory(component): component is CustomFactory {
-    return !isUndefined((component as CustomFactory).useFactory);
+  public isCustomFactory(provider): provider is CustomFactory {
+    return !isUndefined((provider as CustomFactory).useFactory);
   }
 
   public isDynamicModule(exported): exported is DynamicModule {
     return exported && exported.module;
   }
 
-  public addCustomClass(component: CustomClass, collection: Map<string, any>) {
-    const { name, useClass } = component;
+  public addCustomClass(provider: CustomClass, collection: Map<string, any>) {
+    const { name, useClass } = provider;
     collection.set(name, {
       name,
       metatype: useClass,
@@ -251,8 +251,8 @@ export class Module {
     });
   }
 
-  public addCustomValue(component: CustomValue, collection: Map<string, any>) {
-    const { name, useValue: value } = component;
+  public addCustomValue(provider: CustomValue, collection: Map<string, any>) {
+    const { name, useValue: value } = provider;
     collection.set(name, {
       name,
       metatype: null,
@@ -264,10 +264,10 @@ export class Module {
   }
 
   public addCustomFactory(
-    component: CustomFactory,
+    provider: CustomFactory,
     collection: Map<string, any>,
   ) {
-    const { name, useFactory: factory, inject } = component;
+    const { name, useFactory: factory, inject } = provider;
     collection.set(name, {
       name,
       metatype: factory as any,
@@ -278,27 +278,27 @@ export class Module {
     });
   }
 
-  public addExportedComponent(
-    exportedComponent: ComponentMetatype | string | DynamicModule,
+  public addExportedProvider(
+    exportedProvider: ProviderMetatype | string | DynamicModule,
   ) {
     const addExportedUnit = (token: string) =>
       this._exports.add(this.validateExportedProvider(token));
 
-    if (this.isCustomProvider(exportedComponent as any)) {
-      return this.addCustomExportedComponent(exportedComponent as any);
-    } else if (isString(exportedComponent)) {
-      return addExportedUnit(exportedComponent);
-    } else if (this.isDynamicModule(exportedComponent)) {
-      const { module } = exportedComponent;
+    if (this.isCustomProvider(exportedProvider as any)) {
+      return this.addCustomExportedProvider(exportedProvider as any);
+    } else if (isString(exportedProvider)) {
+      return addExportedUnit(exportedProvider);
+    } else if (this.isDynamicModule(exportedProvider)) {
+      const { module } = exportedProvider;
       return addExportedUnit(module.name);
     }
-    addExportedUnit(exportedComponent.name);
+    addExportedUnit(exportedProvider.name);
   }
 
-  public addCustomExportedComponent(
-    exportedComponent: CustomFactory | CustomValue | CustomClass,
+  public addCustomExportedProvider(
+    exportedProvider: CustomFactory | CustomValue | CustomClass,
   ) {
-    const provide = exportedComponent.provide;
+    const provide = exportedProvider.provide;
     if (isString(provide) || isSymbol(provide)) {
       return this._exports.add(this.validateExportedProvider(provide));
     }
@@ -306,7 +306,7 @@ export class Module {
   }
 
   public validateExportedProvider(token: string) {
-    if (this._components.has(token)) {
+    if (this._providers.has(token)) {
       return token;
     }
     const importedArray = [...this._relatedModules.values()];
@@ -337,8 +337,8 @@ export class Module {
   }
 
   public replace(toReplace, options) {
-    if (options.isComponent) {
-      return this.addComponent({ provide: toReplace, ...options });
+    if (options.isProvider) {
+      return this.addProvider({ provide: toReplace, ...options });
     }
     this.addInjectable({
       provide: toReplace,

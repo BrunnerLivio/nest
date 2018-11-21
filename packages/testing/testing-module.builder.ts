@@ -43,14 +43,6 @@ export class TestingModuleBuilder {
     return this.override(typeOrToken, false);
   }
 
-  /** @deprecated */
-  public overrideComponent(typeOrToken): OverrideBy {
-    deprecate(
-      'The "overrideComponent()" method is deprecated and will be removed within next major release. Use "overrideProvider()" instead.',
-    );
-    return this.override(typeOrToken, true);
-  }
-
   public overrideProvider(typeOrToken): OverrideBy {
     return this.override(typeOrToken, true);
   }
@@ -67,11 +59,11 @@ export class TestingModuleBuilder {
     return new TestingModule(this.container, [], root, this.applicationConfig);
   }
 
-  private override(typeOrToken, isComponent: boolean): OverrideBy {
+  private override(typeOrToken, isProvider: boolean): OverrideBy {
     const addOverload = options => {
       this.overloadsMap.set(typeOrToken, {
         ...options,
-        isComponent,
+        isProvider,
       });
       return this;
     };
@@ -90,8 +82,8 @@ export class TestingModuleBuilder {
   }
 
   private applyOverloadsMap() {
-    [...this.overloadsMap.entries()].forEach(([component, options]) => {
-      this.container.replace(component, options);
+    [...this.overloadsMap.entries()].forEach(([provider, options]) => {
+      this.container.replace(provider, options);
     });
   }
 

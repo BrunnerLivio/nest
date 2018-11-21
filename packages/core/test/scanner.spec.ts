@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { GUARDS_METADATA } from '../../common/constants';
-import { Component } from '../../common/decorators/core/component.decorator';
+import { Provider } from '../../common/decorators/core/provider.decorator';
 import { Controller } from '../../common/decorators/core/controller.decorator';
 import { UseGuards } from '../../common/decorators/core/use-guards.decorator';
 import { Module } from '../../common/decorators/modules/module.decorator';
@@ -14,21 +14,21 @@ import { DependenciesScanner } from '../scanner';
 class Guard {}
 
 describe('DependenciesScanner', () => {
-  @Component()
-  class TestComponent {}
+  @Injectable()
+  class TestProvider {}
   @Controller('')
   class TestRoute {}
 
   @Module({
-    providers: [TestComponent],
+    providers: [TestProvider],
     controllers: [TestRoute],
-    exports: [TestComponent],
+    exports: [TestProvider],
   })
   class AnotherTestModule {}
 
   @Module({
     imports: [AnotherTestModule],
-    providers: [TestComponent],
+    providers: [TestProvider],
     controllers: [TestRoute],
   })
   class TestModule {}
@@ -58,23 +58,23 @@ describe('DependenciesScanner', () => {
     expectation.verify();
   });
 
-  it('should "storeComponent" call twice (2 components) container method "addComponent"', async () => {
-    const expectation = mockContainer.expects('addComponent').twice();
-    const stub = sinon.stub(scanner, 'storeExportedComponent');
+  it('should "storeProvider" call twice (2 providers) container method "addProvider"', async () => {
+    const expectation = mockContainer.expects('addProvider').twice();
+    const stub = sinon.stub(scanner, 'storeExportedProvider');
 
     await scanner.scan(TestModule as any);
     expectation.verify();
     stub.restore();
   });
 
-  it('should "storeRoute" call twice (2 components) container method "addController"', async () => {
+  it('should "storeRoute" call twice (2 providers) container method "addController"', async () => {
     const expectation = mockContainer.expects('addController').twice();
     await scanner.scan(TestModule as any);
     expectation.verify();
   });
 
-  it('should "storeExportedComponent" call once (1 component) container method "addExportedComponent"', async () => {
-    const expectation = mockContainer.expects('addExportedComponent').once();
+  it('should "storeExportedProvider" call once (1 provider) container method "addExportedProvider"', async () => {
+    const expectation = mockContainer.expects('addExportedProvider').once();
     await scanner.scan(TestModule as any);
     expectation.verify();
   });
@@ -131,7 +131,7 @@ describe('DependenciesScanner', () => {
   }
   describe('reflectKeyMetadata', () => {
     it('should return undefined', () => {
-      const result = scanner.reflectKeyMetadata(TestComponent, 'key', 'method');
+      const result = scanner.reflectKeyMetadata(TestProvider, 'key', 'method');
       expect(result).to.be.undefined;
     });
     it('should return array', () => {
@@ -171,40 +171,40 @@ describe('DependenciesScanner', () => {
     });
   });
 
-  describe('storeComponent', () => {
+  describe('storeProvider', () => {
     const token = 'token';
 
-    describe('when component is not custom', () => {
-      it('should call container "addComponent" with expected args', () => {
-        const component = {};
+    describe('when provider is not custom', () => {
+      it('should call container "addProvider" with expected args', () => {
+        const provider = {};
         const expectation = mockContainer
-          .expects('addComponent')
-          .withArgs(component, token);
+          .expects('addProvider')
+          .withArgs(provider, token);
 
-        mockContainer.expects('addComponent').callsFake(() => false);
-        scanner.storeComponent(component, token);
+        mockContainer.expects('addProvider').callsFake(() => false);
+        scanner.storeProvider(provider, token);
 
         expectation.verify();
       });
     });
-    describe('when component is custom', () => {
+    describe('when provider is custom', () => {
       describe('and is global', () => {
-        const component = {
+        const provider = {
           provide: APP_INTERCEPTOR,
           useValue: true,
         };
 
-        it('should call container "addComponent" with expected args', () => {
-          const expectation = mockContainer.expects('addComponent').atLeast(1);
+        it('should call container "addProvider" with expected args', () => {
+          const expectation = mockContainer.expects('addProvider').atLeast(1);
 
-          mockContainer.expects('addComponent').callsFake(() => false);
-          scanner.storeComponent(component, token);
+          mockContainer.expects('addProvider').callsFake(() => false);
+          scanner.storeProvider(provider, token);
 
           expectation.verify();
         });
         it('should push new object to "applicationProvidersApplyMap" array', () => {
-          mockContainer.expects('addComponent').callsFake(() => false);
-          scanner.storeComponent(component, token);
+          mockContainer.expects('addProvider').callsFake(() => false);
+          scanner.storeProvider(provider, token);
           const applyMap = (scanner as any).applicationProvidersApplyMap;
 
           expect(applyMap).to.have.length(1);
@@ -212,17 +212,17 @@ describe('DependenciesScanner', () => {
         });
       });
       describe('and is not global', () => {
-        const component = {
+        const provider = {
           provide: 'CUSTOM',
           useValue: true,
         };
-        it('should call container "addComponent" with expected args', () => {
+        it('should call container "addProvider" with expected args', () => {
           const expectation = mockContainer
-            .expects('addComponent')
-            .withArgs(component, token);
+            .expects('addProvider')
+            .withArgs(provider, token);
 
-          mockContainer.expects('addComponent').callsFake(() => false);
-          scanner.storeComponent(component, token);
+          mockContainer.expects('addProvider').callsFake(() => false);
+          scanner.storeProvider(provider, token);
 
           expectation.verify();
         });
@@ -231,8 +231,8 @@ describe('DependenciesScanner', () => {
             0,
           );
 
-          mockContainer.expects('addComponent').callsFake(() => false);
-          scanner.storeComponent(component, token);
+          mockContainer.expects('addProvider').callsFake(() => false);
+          scanner.storeProvider(provider, token);
           expect((scanner as any).applicationProvidersApplyMap).to.have.length(
             0,
           );
@@ -252,7 +252,7 @@ describe('DependenciesScanner', () => {
       const expectedInstance = {};
       mockContainer.expects('getModules').callsFake(() => ({
         get: () => ({
-          components: { get: () => ({ instance: expectedInstance }) },
+          providers: { get: () => ({ instance: expectedInstance }) },
         }),
       }));
       const applySpy = sinon.spy();

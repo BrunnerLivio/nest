@@ -1,22 +1,5 @@
 import { expect } from 'chai';
-import { Component, MiddlewareFunction, Interceptor, mixin, Injectable } from '../../index';
-
-describe('@Component', () => {
-  @Component()
-  class TestComponent {
-    constructor(param: number, test: string) {}
-  }
-
-  it('should enhance component with "design:paramtypes" metadata', () => {
-    const constructorParams = Reflect.getMetadata(
-      'design:paramtypes',
-      TestComponent,
-    );
-
-    expect(constructorParams[0]).to.be.eql(Number);
-    expect(constructorParams[1]).to.be.eql(String);
-  });
-});
+import { Provider, MiddlewareFunction, Interceptor, mixin, Injectable } from '../../index';
 
 describe('@Injectable', () => {
   @Injectable()
@@ -24,7 +7,7 @@ describe('@Injectable', () => {
     constructor(param: number, test: string) {}
   }
 
-  it('should enhance component with "design:paramtypes" metadata', () => {
+  it('should enhance provider with "design:paramtypes" metadata', () => {
     const constructorParams = Reflect.getMetadata(
       'design:paramtypes',
       TestMiddleware,
@@ -41,7 +24,7 @@ describe('@Interceptor', () => {
     constructor(param: number, test: string) {}
   }
 
-  it('should enhance component with "design:paramtypes" metadata', () => {
+  it('should enhance provider with "design:paramtypes" metadata', () => {
     const constructorParams = Reflect.getMetadata(
       'design:paramtypes',
       TestInterceptor,

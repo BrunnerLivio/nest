@@ -41,14 +41,14 @@ describe('ModuleTokenFactory', () => {
         SingleScope()(Module) as any,
         [Module],
         {
-          components: [{}],
+          providers: [{}],
         } as any,
       );
       expect(token).to.be.deep.eq(
         hash({
           module: Module.name,
           dynamic: safeStringify({
-            components: [{}],
+            providers: [{}],
           }),
           scope: [Module.name],
         }),
@@ -64,7 +64,7 @@ describe('ModuleTokenFactory', () => {
   describe('getDynamicMetadataToken', () => {
     describe('when metadata exists', () => {
       it('should return hash', () => {
-        const metadata = { components: ['', {}] };
+        const metadata = { providers: ['', {}] };
         expect(factory.getDynamicMetadataToken(metadata as any)).to.be.eql(
           JSON.stringify(metadata),
         );

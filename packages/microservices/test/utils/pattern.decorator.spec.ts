@@ -8,12 +8,12 @@ import {
 
 describe('@MessagePattern', () => {
   const pattern = { role: 'test' };
-  class TestComponent {
+  class TestProvider {
     @MessagePattern(pattern)
     public static test() {}
   }
   it(`should enhance method with ${PATTERN_METADATA} metadata`, () => {
-    const metadata = Reflect.getMetadata(PATTERN_METADATA, TestComponent.test);
+    const metadata = Reflect.getMetadata(PATTERN_METADATA, TestProvider.test);
     expect(metadata).to.be.eql(pattern);
   });
 });

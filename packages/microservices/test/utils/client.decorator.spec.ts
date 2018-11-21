@@ -8,19 +8,19 @@ import { Client } from '../../decorators/client.decorator';
 
 describe('@Client', () => {
   const pattern = { role: 'test' };
-  class TestComponent {
+  class TestProvider {
     @Client(pattern as any)
     public static instance;
   }
   it(`should enhance property with metadata`, () => {
     const isClient = Reflect.getOwnMetadata(
       CLIENT_METADATA,
-      TestComponent,
+      TestProvider,
       'instance',
     );
     const config = Reflect.getOwnMetadata(
       CLIENT_CONFIGURATION_METADATA,
-      TestComponent,
+      TestProvider,
       'instance',
     );
 

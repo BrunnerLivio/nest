@@ -30,16 +30,16 @@ export class SocketModule {
       this.getContextCreator(container),
     );
     const modules = container.getModules();
-    modules.forEach(({ components }, moduleName) =>
-      this.hookGatewaysIntoServers(components, moduleName),
+    modules.forEach(({ providers }, moduleName) =>
+      this.hookGatewaysIntoServers(providers, moduleName),
     );
   }
 
   public hookGatewaysIntoServers(
-    components: Map<string, InstanceWrapper<Injectable>>,
+    providers: Map<string, InstanceWrapper<Injectable>>,
     moduleName: string,
   ) {
-    components.forEach(wrapper =>
+    providers.forEach(wrapper =>
       this.hookGatewayIntoServer(wrapper, moduleName),
     );
   }

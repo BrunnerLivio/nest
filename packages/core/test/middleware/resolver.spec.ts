@@ -2,13 +2,13 @@ import * as sinon from 'sinon';
 import { expect } from 'chai';
 import { MiddlewareResolver } from '../../middleware/resolver';
 import { MiddlewareContainer } from '../../middleware/container';
-import { Component } from '../../../common/decorators/core/component.decorator';
+import { Injectable } from '../../../common/decorators/core/inject.decorator';
 import { NestMiddleware } from '../../../common/interfaces/middleware/nest-middleware.interface';
 import { Logger } from '../../../common/services/logger.service';
 import { NestEnvironment } from '../../../common/enums/nest-environment.enum';
 
 describe('MiddlewareResolver', () => {
-  @Component()
+  @Injectable()
   class TestMiddleware implements NestMiddleware {
     public resolve() {
       return (req, res, next) => {};

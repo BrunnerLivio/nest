@@ -21,7 +21,7 @@ export class InstanceLoader {
 
   private createPrototypes(modules: Map<string, Module>) {
     modules.forEach(module => {
-      this.createPrototypesOfComponents(module);
+      this.createPrototypesOfProviders(module);
       this.createPrototypesOfInjectables(module);
       this.createPrototypesOfRoutes(module);
     });
@@ -30,7 +30,7 @@ export class InstanceLoader {
   private async createInstances(modules: Map<string, Module>) {
     await Promise.all(
       [...modules.values()].map(async module => {
-        await this.createInstancesOfComponents(module);
+        await this.createInstancesOfProviders(module);
         await this.createInstancesOfInjectables(module);
         await this.createInstancesOfRoutes(module);
 
@@ -40,19 +40,19 @@ export class InstanceLoader {
     );
   }
 
-  private createPrototypesOfComponents(module: Module) {
-    module.components.forEach(wrapper => {
+  private createPrototypesOfProviders(module: Module) {
+    module.providers.forEach(wrapper => {
       this.injector.loadPrototypeOfInstance<Injectable>(
         wrapper,
-        module.components,
+        module.providers,
       );
     });
   }
 
-  private async createInstancesOfComponents(module: Module) {
+  private async createInstancesOfProviders(module: Module) {
     await Promise.all(
-      [...module.components.values()].map(
-        async wrapper => this.injector.loadInstanceOfComponent(wrapper, module),
+      [...module.providers.values()].map(
+        async wrapper => this.injector.loadInstanceOfProvider(wrapper, module),
       ),
     );
   }

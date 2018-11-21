@@ -24,7 +24,7 @@ export class ContainerScanner {
     contextModule: Partial<Module>,
   ): TResult {
     const dependencies = new Map([
-      ...contextModule.components,
+      ...contextModule.providers,
       ...contextModule.routes,
       ...contextModule.injectables,
     ]);
@@ -44,7 +44,7 @@ export class ContainerScanner {
     }
     const modules = this.container.getModules();
     const initialValue = {
-      components: [],
+      providers: [],
       routes: [],
       injectables: [],
     };
@@ -55,7 +55,7 @@ export class ContainerScanner {
 
     this.flatContainer = ([...modules.values()].reduce(
       (current, next) => ({
-        components: merge(current.components, next.components),
+        providers: merge(current.providers, next.providers),
         routes: merge(current.routes, next.routes),
         injectables: merge(current.injectables, next.injectables),
       }),
