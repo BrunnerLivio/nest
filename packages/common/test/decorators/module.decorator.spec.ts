@@ -47,10 +47,10 @@ describe('@Module', () => {
     );
   });
 
-  it(`should throw an exception when "providers" key is used`, () => {
+  it(`should throw an exception when "components" key is used`, () => {
     const invalidProps = {
       ...moduleProps,
-      providers: ['Test'],
+      components: ['Test'],
     };
 
     expect(Module.bind(null, invalidProps)).to.throw(
