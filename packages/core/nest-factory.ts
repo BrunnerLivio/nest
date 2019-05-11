@@ -67,8 +67,8 @@ export class NestFactoryStatic {
   /**
    * Creates an instance of the NestMicroservice
    *
-   * @param  {} module Entry (root) application module class
-   * @param  {NestMicroserviceOptions & MicroserviceOptions} options Optional microservice configuration
+   * @param {any} module Entry (root) application module class
+   * @param  {NestMicroserviceOptions} options Optional microservice configuration
    * @returns {Promise}
    */
   public async createMicroservice(
@@ -94,7 +94,7 @@ export class NestFactoryStatic {
   /**
    * Creates an instance of the NestApplicationContext
    *
-   * @param  {} module Entry (root) application module class
+   * @param {any} module Entry (root) application module class
    * @param  {NestApplicationContextOptions} options Optional Nest application configuration
    * @returns {Promise}
    */

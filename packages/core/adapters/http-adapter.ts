@@ -3,6 +3,10 @@ import { RequestHandler } from '@nestjs/common/interfaces';
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
 import { NestApplicationOptions } from '@nestjs/common/interfaces/nest-application-options.interface';
 
+/**
+ * The awesome AbstractHttpAdapter
+ * @publicApi
+ */
 export abstract class AbstractHttpAdapter<
   TServer = any,
   TRequest = any,

@@ -5,6 +5,9 @@ import { Injector } from './injector';
 import { InstanceWrapper } from './instance-wrapper';
 import { Module } from './module';
 
+/**
+ * The module ref
+ */
 export abstract class ModuleRef {
   private readonly injector = new Injector();
   private readonly containerScanner: ContainerScanner;
