@@ -26,8 +26,46 @@ import { DependenciesScanner } from './scanner';
 export class NestFactoryStatic {
   private readonly logger = new Logger('NestFactory', true);
   /**
-   * Creates an instance of the NestApplication
+   * @publicApi
+   *
+   * @description
+   *
+   * Creates an instance of NestApplication.
+   *
+   * @param module - Entry (root) application module class
+   * @param {AbstractHttpAdapter} [httpAdapter] - Adapter to proxy the request/response cycle to underlying HTTP server
+   * @param {NestApplicationOptions} [options] - List of options to initialize NestApplication
+   *
    * @returns {Promise}
+   *
+   * @see [Application Context](/application-context)
+   *
+   * @usageNotes
+   *
+   * ### Specifying an entry module
+   * Pass the required *root module* for the application via the module parameter. By convention, it is usually called `ApplicationModule`.  Starting with this module, Nest assembles the dependency graph and begins the process of Dependency Injection and instantiates the classes needed to launch your application.
+   *
+   * ### Specifying httpAdapter
+   * In this example, we create a NestApplication that uses the `FastifyAdapter`. Pass options to `Fastify` by passing an options object into the `FastifyAdapter()` constructor. Note that if the httpAdapter is not `Express`, the supporting package (e.g., `@nestjs/platform-fastify`) must be installed.
+   *
+   * ```typescript
+   * async function bootstrap() {
+   *   const app = await NestFactory.create<NestFastifyApplication>(
+   *     ApplicationModule,
+   *     new FastifyAdapter(),
+   *   );
+   *   await app.listen(3000);
+   * }
+   * bootstrap();
+   * ```
+   *
+   * ### Initializing NestApplication options
+   * The `create()` method takes an optional options object in plain JSON format.
+   * This object can have the following optional properties:
+   * * logger : LoggerService | boolean
+   * * cors : CorsOptions | boolean [see more](https://github.com/expressjs/cors#configuration-options)
+   * * bodyParser: boolean
+   * * httpsOptions: HttpsOptions [see more](/faq/multiple-servers)
    */
   public async create<T extends INestApplication = INestApplication>(
     module: any,
