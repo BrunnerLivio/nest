@@ -23,11 +23,12 @@ import { NestApplication } from './nest-application';
 import { NestApplicationContext } from './nest-application-context';
 import { DependenciesScanner } from './scanner';
 
+/**
+ * @publicApi
+ */
 export class NestFactoryStatic {
   private readonly logger = new Logger('NestFactory', true);
   /**
-   * @publicApi
-   *
    * @description
    *
    * Creates an instance of NestApplication.
@@ -105,8 +106,8 @@ export class NestFactoryStatic {
   /**
    * Creates an instance of the NestMicroservice
    *
-   * @param  {} module Entry (root) application module class
-   * @param  {NestMicroserviceOptions & MicroserviceOptions} options Optional microservice configuration
+   * @param module Entry (root) application module class
+   * @param options Optional microservice configuration
    * @returns {Promise}
    */
   public async createMicroservice(
@@ -132,8 +133,8 @@ export class NestFactoryStatic {
   /**
    * Creates an instance of the NestApplicationContext
    *
-   * @param  {} module Entry (root) application module class
-   * @param  {NestApplicationContextOptions} options Optional Nest application configuration
+   * @param module Entry (root) application module class
+   * @param options Optional Nest application configuration
    * @returns {Promise}
    */
   public async createApplicationContext(
