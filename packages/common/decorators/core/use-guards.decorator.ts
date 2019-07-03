@@ -12,7 +12,7 @@ import { validateEach } from '../../utils/validate-each.util';
  * When the `@UseGuards()` is used on the handler level:
  * - Guard will be registered only to the specified method
  *
- * @param  {} ...guards
+ * @param  ...guards
  */
 export function UseGuards(...guards: (CanActivate | Function)[]) {
   return (target: any, key?: string, descriptor?: any) => {
