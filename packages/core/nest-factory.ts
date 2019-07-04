@@ -35,10 +35,10 @@ import { DependenciesScanner } from './scanner';
  * Dependency Injection and instantiates the classes needed to launch your
  * application.
  *
- * ### [NestApplication only] Specifying httpAdapter
+ * ### [NestApplication only] Providing an httpAdapter object
  * In this example, we create a NestApplication that uses the `FastifyAdapter`.
  * Pass options to `Fastify` by passing an options object into the
- * `FastifyAdapter()` constructor. Note that if the httpAdapter is not
+ * `FastifyAdapter()` constructor. Note that if the `httpAdapter` is not
  * `Express`, the supporting package (e.g., `@nestjs/platform-fastify`) must be
  * installed.
  *
@@ -61,8 +61,8 @@ export class NestFactoryStatic {
    * @param module Entry (root) application module class
    * @param options List of options to initialize NestApplication
    *
-   * @returns {Promise}
-   *
+   * @returns A promise that, when resolved,
+   * contains a reference to the NestApplication instance.
    */
   public async create<T extends INestApplication = INestApplication>(
     module: any,
@@ -76,8 +76,8 @@ export class NestFactoryStatic {
    *    the underlying HTTP server
    * @param options List of options to initialize NestApplication
    *
-   * @returns {Promise}
-   *
+   * @returns A promise that, when resolved,
+   * contains a reference to the NestApplication instance.
    */
   public async create<T extends INestApplication = INestApplication>(
     module: any,
@@ -115,7 +115,9 @@ export class NestFactoryStatic {
    *
    * @param module Entry (root) application module class
    * @param options Optional microservice configuration
-   * @returns {Promise}
+   *
+   * @returns A promise that, when resolved,
+   * contains a reference to the NestMicroservice instance.
    */
   public async createMicroservice(
     module: any,
@@ -142,7 +144,9 @@ export class NestFactoryStatic {
    *
    * @param module Entry (root) application module class
    * @param options Optional Nest application configuration
-   * @returns {Promise}
+   *
+   * @returns A promise that, when resolved,
+   * contains a reference to the NestApplicationContext instance.
    */
   public async createApplicationContext(
     module: any,
