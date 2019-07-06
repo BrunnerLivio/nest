@@ -7,6 +7,9 @@ import { MicroserviceOptions } from './microservices/microservice-configuration.
 import { INestApplicationContext } from './nest-application-context.interface';
 import { WebSocketAdapter } from './websockets/web-socket-adapter.interface';
 
+/**
+ * @publicApi
+ */
 export interface INestApplication extends INestApplicationContext {
   /**
    * A wrapper function around HTTP adapter method: `adapter.use()`.
@@ -29,7 +32,7 @@ export interface INestApplication extends INestApplicationContext {
    * @param  {number} port
    * @param  {string} hostname
    * @param  {Function} callback Optional callback
-   * @returns {Promise}
+   * @returns a Promise that, when resolve, is a reference to the underlying HttpServer
    */
   listen(port: number | string, callback?: () => void): Promise<any>;
   listen(
