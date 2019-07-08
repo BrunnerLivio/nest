@@ -9,6 +9,9 @@ git:
 
 addons:
   firefox: "latest"
+  artifacts:
+    paths:
+      - $HOME/benchmarks/all_output.txt
 
 before_script:
   - export DISPLAY=:99.0
@@ -56,3 +59,8 @@ jobs:
       script: npm run lint
       node_js: 12
 
+    - stage: "Test"
+      name: "Benchmarks"
+      install: cd /tmp/ && sudo apt-get install build-essential libssl-dev git -y && git clone https://github.com/wg/wrk.git wrk && cd wrk && make && sudo cp wrk /usr/local/bin
+      script: cd benchmarks && bash run_all.sh && cat all_output.txt
+      node_js: 12
