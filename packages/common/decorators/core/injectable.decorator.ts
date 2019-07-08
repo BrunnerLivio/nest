@@ -28,12 +28,13 @@ export interface InjectableOptions extends ScopeOptions {}
  * various [custom provider](/fundamentals/custom-providers) techniques that expose
  * more capabilities of the DI system.
  *
- * @see [Providers](/providers), [Custom Providers](/fundamentals/custom-providers),
- * [Injection Scopes](/fundamentals/injection-scopes)
+ * @see [Providers](/providers)
+ * @see [Custom Providers](/fundamentals/custom-providers)
+ * @see [Injection Scopes](/fundamentals/injection-scopes)
  *
  * @usageNotes
  *
- * ### Setting provider scope
+ * #### Setting provider scope
  *
  * The `@Injector()` decorator takes an optional options object in plain JSON format.
  * This object has one property: `scope`.
@@ -48,7 +49,7 @@ export interface InjectableOptions extends ScopeOptions {}
  * export class CatsService {}
  * ```
  *
- * ### Declaring providers
+ * #### Declaring providers
  *
  * Providers are declared using the `@Injectable()` decorator and a standard
  * JavaScript class.
@@ -71,7 +72,7 @@ export interface InjectableOptions extends ScopeOptions {}
  * }
  * ```
  *
- * ### Using providers
+ * #### Using providers
  *
  * Providers created using the `@Injectable()` decorator use an
  * [injection token](/fundamentals/custom-providers) that is the class type.
