@@ -3,6 +3,20 @@ import { ScopeOptions } from '../../interfaces/scope-options.interface';
 import { SCOPE_OPTIONS_METADATA } from './../../constants';
 import { Type } from './../../interfaces/type.interface';
 
+/**
+ * @publicApi
+ *
+ * @description
+ *
+ * Defines the injection scope.
+ *
+ * Possible Values:
+ * - DEFAULT -
+ * - TRANSIENT - A new private instance of the provider is instantiated for every use.
+ * - REQUEST - A new instance is instantiated for each request processing pipeline.
+ *
+ * @see [Injection Scopes](/fundamentals/injection-scopes)
+ */
 export interface InjectableOptions extends ScopeOptions {}
 
 /**

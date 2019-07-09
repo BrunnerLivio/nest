@@ -30,6 +30,43 @@ const validateKeys = (keys: string[]) => {
  * - `exports` - the set of components, which should be available for modules, which imports this module
  * @param options {ModuleMetadata} Module metadata
  */
+
+/**
+ * @publicApi
+ *
+ * @description
+ *
+ * Decorator that marks a class as a [module](/modules). Modules are used by
+ * Nest to organize the application structure into scopes. Controllers and
+ * Providers are scoped by the module they are declared in.  Modules and their
+ * classes (Controllers and Providers) form a graph that determines how Nest
+ * performs [Dependency Injection (DI)](/providers#dependency-injection).
+
+ * @see [Modules](/modules)
+ *
+ * @usageNotes
+ *
+ * The following example:
+ * - declares `CatsController` as a controller to be instantiated when the
+ *   `CatsModule` is bootstrapped
+ * - declares `CatsService` as a provider that can be injected within the
+ *   module scope of the `CatsModule`
+ * - exports `CatsService` so that any module that imports `CatsModule`
+ *   may inject `CatsService`
+ *
+ * ```typescript
+ * import { Module } from '@nestjs/common';
+ * import { CatsController } from './cats.controller';
+ * import { CatsService } from './cats.service';
+ *
+ * @Module({
+ *   controllers: [CatsController],
+ *   providers: [CatsService],
+ *   exports: [CatsService]
+ * })
+ * export class CatsModule {}
+ * ```
+ */
 export function Module(metadata: ModuleMetadata): ClassDecorator {
   const propsKeys = Object.keys(metadata);
   validateKeys(propsKeys);

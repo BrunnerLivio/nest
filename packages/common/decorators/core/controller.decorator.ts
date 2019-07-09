@@ -2,6 +2,24 @@ import { PATH_METADATA, SCOPE_OPTIONS_METADATA } from '../../constants';
 import { isString, isUndefined } from '../../utils/shared.utils';
 import { ScopeOptions } from './../../interfaces/scope-options.interface';
 
+/**
+ * @publicApi
+ *
+ * @description
+ *
+ * Optional options object with fields:
+ * - `path` - specifies an optional route path prefix.  When specified, the route path
+ * for a handler is determined by concatenating the prefix with any path
+ * specified in the request decorator
+ * - `scope` - optional setting that defines the injection scope. Possible Values:
+ *  - SINGLETON - The provider is shared across all classes for the lifetime of
+ *   the application.
+ *  - TRANSIENT - A new private instance of the provider is instantiated for every use.
+ *  - REQUEST - A new instance is instantiated for each request processing pipeline.
+ *
+ * @see [Injection Scopes](/fundamentals/injection-scopes)
+ * @see [Routing](/controllers#routing)
+ */
 export interface ControllerOptions extends ScopeOptions {
   path?: string;
 }
