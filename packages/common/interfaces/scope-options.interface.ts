@@ -1,6 +1,15 @@
+/**
+ * @publicApi
+ */
 export enum Scope {
   DEFAULT,
+  /**
+   * A new private instance of the provider is instantiated for every use
+   */
   TRANSIENT,
+  /**
+   * A new instance is instantiated for each request processing pipeline
+   */
   REQUEST,
 }
 
@@ -10,14 +19,5 @@ export enum Scope {
  * @see [Injection Scopes](/fundamentals/injection-scopes)
  */
 export interface ScopeOptions {
-  /**
-   * Defines the injection scope.
-   *
-   * Possible Values:
-   * - DEFAULT -
-   * - TRANSIENT - A new private instance of the provider is instantiated for every use
-   * - REQUEST - A new instance is instantiated for each request processing pipeline
-   *
-   */
   scope?: Scope;
 }
