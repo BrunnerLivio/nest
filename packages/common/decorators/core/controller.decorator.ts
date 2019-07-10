@@ -4,23 +4,14 @@ import { ScopeOptions } from './../../interfaces/scope-options.interface';
 
 /**
  * @publicApi
- *
- * @description
- *
- * Optional options object with fields:
- * - `path` - specifies an optional route path prefix.  When specified, the route path
- * for a handler is determined by concatenating the prefix with any path
- * specified in the request decorator
- * - `scope` - optional setting that defines the injection scope. Possible Values:
- *  - SINGLETON - The provider is shared across all classes for the lifetime of
- *   the application.
- *  - TRANSIENT - A new private instance of the provider is instantiated for every use.
- *  - REQUEST - A new instance is instantiated for each request processing pipeline.
- *
- * @see [Injection Scopes](/fundamentals/injection-scopes)
- * @see [Routing](/controllers#routing)
  */
 export interface ControllerOptions extends ScopeOptions {
+  /**
+   * Specifies an optional route path prefix.  When specified, the route path
+   * for a handler is determined by concatenating the prefix with any path
+   *
+   * @see [Routing](https://docs.nestjs.com/controllers#routing)
+   */
   path?: string;
 }
 
@@ -35,7 +26,7 @@ export function Controller(options: ControllerOptions);
  * Decorator that marks a class as a Nest controller that can receive inbound
  * requests and produce responses. HTTP Controllers optionally accept configuration
  * metadata that determines route paths that route handlers in the class
- * respond to, and lifetime [scope](/fundamentals/injection-scopes#usage).
+ * respond to, and lifetime [scope](https://docs.nestjs.com/fundamentals/injection-scopes#usage).
  *
  * An HTTP Controller responds to inbound HTTP Requests and produces HTTP Responses.
  * It defines a class that provides the context for one or more related route
@@ -43,10 +34,11 @@ export function Controller(options: ControllerOptions);
  * (e.g., `GET /api/profile`, `POST /user/resume`).
  *
  * A Microservice Controller responds to Requests and Responses, as well as events,
- * running over a variety of transports [(read more here)](/microservices/basics). It defines
+ * running over a variety of transports [(read more here)](https:/docs.nestjs.com//microservices/basics). It defines
  * a class that provides a context for one or more message or event handlers.
  *
- * @see [Controllers](/controllers), [Microservices](/microservices/basics#request-response)
+ * @see [Controllers](https://docs.nestjs.com/controllers)
+ * @see [Microservices](https://docs.nestjs.com/microservices/basics#request-response)
  *
  * @usageNotes
  *
@@ -83,10 +75,7 @@ export function Controller(options: ControllerOptions);
  *  export class CatsController { ... }
  * ```
  *
- * Here are possible injection scope values. [Read more about scopes here](/fundamentals/injection-scopes)
- * * Scope.SINGLETON
- * * Scope.REQUEST
- * * Scope.TRANSIENT
+ * [Read more about scopes here](https://docs.nestjs.com/fundamentals/injection-scopes)
  */
 export function Controller(
   prefixOrOptions?: string | ControllerOptions,

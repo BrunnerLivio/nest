@@ -16,8 +16,11 @@ export enum Scope {
 /**
  * @publicApi
  *
- * @see [Injection Scopes](/fundamentals/injection-scopes)
+ * @see [Injection Scopes](https://docs.nestjs.com/fundamentals/injection-scopes)
  */
 export interface ScopeOptions {
+  /**
+   * Specifies the lifetime of an injected Provider or Controller.
+   */
   scope?: Scope;
 }

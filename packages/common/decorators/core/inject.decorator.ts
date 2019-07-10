@@ -5,20 +5,15 @@ import {
 import { isFunction, isUndefined } from '../../utils/shared.utils';
 
 /**
- * Injects provider which has to be available in the current injector (module) scope.
- * Providers are recognized by either types or tokens.
- */
-
-/**
  * @publicApi
  *
  * @description
  *
  * Decorator that marks a constructor parameter as a target for
- * [Dependency Injection (DI)](/providers#dependency-injection). Takes a single
+ * [Dependency Injection (DI)](https://docs.nestjs.com/providers#dependency-injection). Takes a single
  * required parameter which is the
- * [injection token](/fundamentals/custom-providers). The injection token serves
- * as the lookup key for the [provider](/providers) that will be injected
+ * [injection token](https://docs.nestjs.com/fundamentals/custom-providers). The injection token serves
+ * as the lookup key for the [provider](https://docs.nestjs.com/providers) that will be injected
  * (assigned to the constructor parameter).
  *
  * Injection tokens can be types (class names), strings or symbols. This depends
@@ -36,9 +31,9 @@ import { isFunction, isUndefined } from '../../utils/shared.utils';
  * - exporting the provider from a module that is marked as global using the
  *   `@Global()` decorator
  *
- * @see [Providers](/providers)
- * @see [Custom Providers](/fundamentals/custom-providers)
- * @see [Injection Scopes](/fundamentals/injection-scopes)
+ * @see [Providers](https://docs.nestjs.com/providers)
+ * @see [Custom Providers](https://docs.nestjs.com/fundamentals/custom-providers)
+ * @see [Injection Scopes](https://docs.nestjs.com/fundamentals/injection-scopes)
  *
  * @usageNotes
  *

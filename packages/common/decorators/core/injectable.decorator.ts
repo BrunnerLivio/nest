@@ -19,9 +19,9 @@ export interface InjectableOptions extends ScopeOptions {}
  *
  * @description
  *
- * Decorator that marks a class as a [provider](/providers). Providers can be
+ * Decorator that marks a class as a [provider](https://docs.nestjs.com/providers). Providers can be
  * injected into other classes via constructor parameter injection using Nest's
- * built-in [Dependency Injection (DI)](/providers#dependency-injection) system.
+ * built-in [Dependency Injection (DI)](https://docs.nestjs.com/providers#dependency-injection) system.
  *
  * When injecting a provider, it must be visible within the module scope (loosely
  * speaking, the containing module) of the class it is being injected into. This
@@ -34,12 +34,12 @@ export interface InjectableOptions extends ScopeOptions {}
  *   `@Global()` decorator
  *
  * Providers can also be defined in a more explicit and imperative form using
- * various [custom provider](/fundamentals/custom-providers) techniques that expose
+ * various [custom provider](https://docs.nestjs.com/fundamentals/custom-providers) techniques that expose
  * more capabilities of the DI system.
  *
- * @see [Providers](/providers)
- * @see [Custom Providers](/fundamentals/custom-providers)
- * @see [Injection Scopes](/fundamentals/injection-scopes)
+ * @see [Providers](https://docs.nestjs.com/providers)
+ * @see [Custom Providers](https://docs.nestjs.com/fundamentals/custom-providers)
+ * @see [Injection Scopes](https://docs.nestjs.com/fundamentals/injection-scopes)
  *
  * @usageNotes
  *
@@ -49,7 +49,7 @@ export interface InjectableOptions extends ScopeOptions {}
  * This object has one property: `scope`.
  *
  * Following is an example of setting a provider's scope to per-request. See more
- * about [injection scopes here](/fundamentals/injection-scopes).
+ * about [injection scopes here](https://docs.nestjs.com/fundamentals/injection-scopes).
  *
  * ```typescript
  * import { Injectable, Scope } from '@nestjs/common';
@@ -84,7 +84,7 @@ export interface InjectableOptions extends ScopeOptions {}
  * #### Using providers
  *
  * Providers created using the `@Injectable()` decorator use an
- * [injection token](/fundamentals/custom-providers) that is the class type.
+ * [injection token](https://docs.nestjs.com/fundamentals/custom-providers) that is the class type.
  *
  * For example to inject the provider declared above using constructor injection,
  * use the following syntax. In this example, `CatsService` is the name of
