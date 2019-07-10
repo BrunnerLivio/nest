@@ -34,7 +34,7 @@ export function Controller(options: ControllerOptions);
  * (e.g., `GET /api/profile`, `POST /user/resume`).
  *
  * A Microservice Controller responds to Requests and Responses, as well as events,
- * running over a variety of transports [(read more here)](https:/docs.nestjs.com//microservices/basics). It defines
+ * running over a variety of transports [(read more here)](https://docs.nestjs.com//microservices/basics). It defines
  * a class that provides a context for one or more message or event handlers.
  *
  * @see [Controllers](https://docs.nestjs.com/controllers)
