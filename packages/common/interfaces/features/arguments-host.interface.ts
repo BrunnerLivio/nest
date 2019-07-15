@@ -1,14 +1,38 @@
+/**
+ * Methods to obtain request and response objects.
+ */
 export interface HttpArgumentsHost {
+  /**
+   * Returns the in-flight `request` object.
+   */
   getRequest<T = any>(): T;
+  /**
+   * Returns the in-flight `response` object.
+   */
   getResponse<T = any>(): T;
 }
 
+/**
+ * Methods to obtain WebSocket data and client objects.
+ */
 export interface WsArgumentsHost {
+  /**
+   * Returns the data object.
+   */
   getData<T = any>(): T;
+  /**
+   * Returns the client object.
+   */
   getClient<T = any>(): T;
 }
 
+/**
+ * Methods to obtain RPC data object.
+ */
 export interface RpcArgumentsHost {
+  /**
+   * Returns the data object.
+   */
   getData<T = any>(): T;
 }
 

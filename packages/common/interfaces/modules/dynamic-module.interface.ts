@@ -8,7 +8,7 @@ import { Type } from '../type.interface';
  *
  * Interface defining a Dynamic Module.
  *
- * @see [Dynamic Modules](modules#dynamic-modules)
+ * @see [Dynamic Modules](https://docs.nestjs.com/modules#dynamic-modules)
  */
 export interface DynamicModule extends ModuleMetadata {
   /**

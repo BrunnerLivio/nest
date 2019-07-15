@@ -4,6 +4,9 @@ import { ScopeOptions } from './../../interfaces/scope-options.interface';
 
 /**
  * @publicApi
+ *
+ * @description
+ * Interface defining options that can be passed to `@Controller()` decorator
  */
 export interface ControllerOptions extends ScopeOptions {
   /**
@@ -34,7 +37,7 @@ export function Controller(options: ControllerOptions);
  * (e.g., `GET /api/profile`, `POST /user/resume`).
  *
  * A Microservice Controller responds to Requests and Responses, as well as events,
- * running over a variety of transports [(read more here)](https://docs.nestjs.com//microservices/basics). It defines
+ * running over a variety of transports [(read more here)](https://docs.nestjs.com/microservices/basics). It defines
  * a class that provides a context for one or more message or event handlers.
  *
  * @see [Controllers](https://docs.nestjs.com/controllers)
@@ -75,7 +78,7 @@ export function Controller(options: ControllerOptions);
  *  export class CatsController { ... }
  * ```
  *
- * [Read more about scopes here](https://docs.nestjs.com/fundamentals/injection-scopes)
+ * [Read more about scopes here.](https://docs.nestjs.com/fundamentals/injection-scopes)
  */
 export function Controller(
   prefixOrOptions?: string | ControllerOptions,

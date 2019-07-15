@@ -25,33 +25,6 @@ import { DependenciesScanner } from './scanner';
 
 /**
  * @publicApi
- *
- * @usageNotes
- *
- * ### [Any Application] Specifying an entry module
- * Pass the required *root module* for the application via the module parameter.
- * By convention, it is usually called `ApplicationModule`.  Starting with this
- * module, Nest assembles the dependency graph and begins the process of
- * Dependency Injection and instantiates the classes needed to launch your
- * application.
- *
- * ### [NestApplication only] Providing an httpAdapter object
- * In this example, we create a NestApplication that uses the `FastifyAdapter`.
- * Pass options to `Fastify` by passing an options object into the
- * `FastifyAdapter()` constructor. Note that if the `httpAdapter` is not
- * `Express`, the supporting package (e.g., `@nestjs/platform-fastify`) must be
- * installed.
- *
- * ```typescript
- * async function bootstrap() {
- *   const app = await NestFactory.create<NestFastifyApplication>(
- *     ApplicationModule,
- *     new FastifyAdapter(),
- *   );
- *   await app.listen(3000);
- * }
- * bootstrap();
- * ```
  */
 export class NestFactoryStatic {
   private readonly logger = new Logger('NestFactory', true);
@@ -263,4 +236,49 @@ export class NestFactoryStatic {
   }
 }
 
+/**
+ * @publicApi
+ *
+ * @description
+ *
+ * Use NestFactory to create an application instance.
+ *
+ * @usageNotes
+ *
+ * ### [Any Application] Specifying an entry module
+ * Pass the required *root module* for the application via the module parameter.
+ * By convention, it is usually called `ApplicationModule`.  Starting with this
+ * module, Nest assembles the dependency graph and begins the process of
+ * Dependency Injection and instantiates the classes needed to launch your
+ * application.
+ *
+ * ```typescript
+ * import { NestFactory } from '@nestjs/core';
+ * import { ApplicationModule } from './app.module';
+ *
+ * async function bootstrap() {
+ *   const app = await NestFactory.create(ApplicationModule);
+ *   await app.listen(3000);
+ * }
+ * bootstrap();
+ * ```
+ *
+ * ### [NestApplication only] Providing an httpAdapter object
+ * In this example, we create a NestApplication that uses the `FastifyAdapter`.
+ * Pass options to `Fastify` by passing an options object into the
+ * `FastifyAdapter()` constructor. Note that if the `httpAdapter` is not
+ * `Express`, the supporting package (e.g., `@nestjs/platform-fastify`) must be
+ * installed.
+ *
+ * ```typescript
+ * async function bootstrap() {
+ *   const app = await NestFactory.create<NestFastifyApplication>(
+ *     ApplicationModule,
+ *     new FastifyAdapter(),
+ *   );
+ *   await app.listen(3000);
+ * }
+ * bootstrap();
+ * ```
+ */
 export const NestFactory = new NestFactoryStatic();

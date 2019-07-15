@@ -10,7 +10,7 @@ import { Type } from './../../interfaces/type.interface';
  *
  * Defines the injection scope.
  *
- * @see [Injection Scopes](/fundamentals/injection-scopes)
+ * @see [Injection Scopes](https://docs.nestjs.com/fundamentals/injection-scopes)
  */
 export interface InjectableOptions extends ScopeOptions {}
 

@@ -11,7 +11,7 @@ import { Provider } from './provider.interface';
  *
  * Interface defining the property object that describes the module.
  *
- * @see [Modules](/modules)
+ * @see [Modules](https://docs.nestjs.com/modules)
  */
 export interface ModuleMetadata {
   /**
@@ -23,17 +23,17 @@ export interface ModuleMetadata {
   >;
   /**
    * Optional list of controllers defined in this module which have to be
-   * instantiated
+   * instantiated.
    */
   controllers?: Type<any>[];
   /**
    * Optional list of providers that will be instantiated by the Nest injector
-   * and that may be shared at least across this module
+   * and that may be shared at least across this module.
    */
   providers?: Provider[];
   /**
    * Optional list of the subset of providers that are provided by this module
-   * and should be available in other modules which import this module
+   * and should be available in other modules which import this module.
    */
   exports?: Array<
     | DynamicModule

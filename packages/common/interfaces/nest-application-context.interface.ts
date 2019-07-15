@@ -5,6 +5,9 @@ import { Type } from './type.interface';
 
 /**
  * @publicApi
+ *
+ * @description
+ * Interface defining NestApplicationContext.
  */
 export interface INestApplicationContext {
   /**

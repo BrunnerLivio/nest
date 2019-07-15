@@ -98,6 +98,12 @@ export function Query(
   );
 }
 
+/**
+ * @publicApi
+ *
+ * @description
+ * Decorator...
+ */
 export function Body(): ParameterDecorator;
 export function Body(
   ...pipes: (Type<PipeTransform> | PipeTransform)[]
