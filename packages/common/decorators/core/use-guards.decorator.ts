@@ -5,10 +5,6 @@ import { isFunction } from '../../utils/shared.utils';
 import { validateEach } from '../../utils/validate-each.util';
 
 /**
- * @publicApi
- *
- * @description
- *
  * Decorator that binds guards to the scope of the controller or method,
  * depending on its context.
  *
@@ -40,6 +36,7 @@ import { validateEach } from '../../utils/validate-each.util';
  * @UseGuards(new RolesGuard())
  * export class CatsController {}
  * ```
+ * @publicApi
  */
 export function UseGuards(...guards: (CanActivate | Function)[]) {
   return (target: any, key?: string, descriptor?: any) => {

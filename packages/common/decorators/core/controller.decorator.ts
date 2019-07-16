@@ -3,10 +3,9 @@ import { isString, isUndefined } from '../../utils/shared.utils';
 import { ScopeOptions } from './../../interfaces/scope-options.interface';
 
 /**
- * @publicApi
  *
- * @description
  * Interface defining options that can be passed to `@Controller()` decorator
+ * @publicApi
  */
 export interface ControllerOptions extends ScopeOptions {
   /**
@@ -22,12 +21,10 @@ export function Controller();
 export function Controller(prefix: string);
 export function Controller(options: ControllerOptions);
 /**
- * @publicApi
- *
- * @description
- *
  * Decorator that marks a class as a Nest controller that can receive inbound
- * requests and produce responses. HTTP Controllers optionally accept configuration
+ * requests and produce responses.
+ *
+ * HTTP Controllers optionally accept configuration
  * metadata that determines route paths that route handlers in the class
  * respond to, and lifetime [scope](https://docs.nestjs.com/fundamentals/injection-scopes#usage).
  *
@@ -79,6 +76,8 @@ export function Controller(options: ControllerOptions);
  * ```
  *
  * [Read more about scopes here.](https://docs.nestjs.com/fundamentals/injection-scopes)
+ *
+ * @publicApi
  */
 export function Controller(
   prefixOrOptions?: string | ControllerOptions,

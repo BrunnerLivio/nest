@@ -4,21 +4,15 @@ import { SCOPE_OPTIONS_METADATA } from './../../constants';
 import { Type } from './../../interfaces/type.interface';
 
 /**
- * @publicApi
- *
- * @description
- *
  * Defines the injection scope.
  *
  * @see [Injection Scopes](https://docs.nestjs.com/fundamentals/injection-scopes)
+ *
+ * @publicApi
  */
 export interface InjectableOptions extends ScopeOptions {}
 
 /**
- * @publicApi
- *
- * @description
- *
  * Decorator that marks a class as a [provider](https://docs.nestjs.com/providers). Providers can be
  * injected into other classes via constructor parameter injection using Nest's
  * built-in [Dependency Injection (DI)](https://docs.nestjs.com/providers#dependency-injection) system.
@@ -112,6 +106,7 @@ export interface InjectableOptions extends ScopeOptions {}
  *   }
  * }
  * ```
+ * @publicApi
  */
 export function Injectable(options?: InjectableOptions): ClassDecorator {
   return (target: object) => {

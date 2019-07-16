@@ -76,6 +76,19 @@ export const UploadedFile: (
 export const UploadedFiles: () => ParameterDecorator = createRouteParamDecorator(
   RouteParamtypes.FILES,
 );
+/**
+ * Route handler parameter decorator. Extracts the `headers`
+ * property from the `req` object and populates the decorated
+ * parameter with the value of `headers`.
+ *
+ * `property` - optional name of single header property to extract.
+ *
+ * Example: `async update(@Headers() headers)`
+ *
+ * @see [Request object](https://docs.nestjs.com/controllers#request-object)
+ *
+ * @publicApi
+ */
 export const Headers: (
   property?: string,
 ) => ParameterDecorator = createRouteParamDecorator(RouteParamtypes.HEADERS);
@@ -88,6 +101,17 @@ export function Query(
   property: string,
   ...pipes: (Type<PipeTransform> | PipeTransform)[]
 ): ParameterDecorator;
+/**
+ * Route handler parameter decorator. Extracts the `query`
+ * property from the `req` object and populates the decorated
+ * parameter with the value of `query`.
+ *
+ * Example: `async find(@Query() query: string)`
+ *
+ * @see [Request object](https://docs.nestjs.com/controllers#request-object)
+ *
+ * @publicApi
+ */
 export function Query(
   property?: string | (Type<PipeTransform> | PipeTransform),
   ...pipes: (Type<PipeTransform> | PipeTransform)[]
@@ -98,12 +122,6 @@ export function Query(
   );
 }
 
-/**
- * @publicApi
- *
- * @description
- * Decorator...
- */
 export function Body(): ParameterDecorator;
 export function Body(
   ...pipes: (Type<PipeTransform> | PipeTransform)[]
@@ -112,6 +130,17 @@ export function Body(
   property: string,
   ...pipes: (Type<PipeTransform> | PipeTransform)[]
 ): ParameterDecorator;
+/**
+ * Route handler parameter decorator. Extracts the `body`
+ * property from the `req` object and populates the decorated
+ * parameter with the value of `body`.
+ *
+ * Example: `async create(@Body() createCatDto: CreateCatDto)`
+ *
+ * @see [Request object](https://docs.nestjs.com/controllers#request-object)
+ *
+ * @publicApi
+ */
 export function Body(
   property?: string | (Type<PipeTransform> | PipeTransform),
   ...pipes: (Type<PipeTransform> | PipeTransform)[]

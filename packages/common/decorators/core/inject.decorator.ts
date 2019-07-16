@@ -5,10 +5,6 @@ import {
 import { isFunction, isUndefined } from '../../utils/shared.utils';
 
 /**
- * @publicApi
- *
- * @description
- *
  * Decorator that marks a constructor parameter as a target for
  * [Dependency Injection (DI)](https://docs.nestjs.com/providers#dependency-injection). Takes a single
  * required parameter which is the
@@ -81,6 +77,7 @@ import { isFunction, isUndefined } from '../../utils/shared.utils';
  *   constructor(@Inject('CONNECTION') connection: Connection) {}
  * }
  * ```
+ * @publicApi
  */
 
 export function Inject<T = any>(token?: T) {
