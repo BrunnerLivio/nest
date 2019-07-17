@@ -9,73 +9,115 @@ import { ScopeOptions } from './../../interfaces/scope-options.interface';
  */
 export interface ControllerOptions extends ScopeOptions {
   /**
-   * Specifies an optional route path prefix.  When specified, the route path
-   * for a handler is determined by concatenating the prefix with any path
+   * Specifies an optional `route path prefix`.  The prefix is pre-pended to the
+   * path specified in any request decorator in the class.
    *
    * @see [Routing](https://docs.nestjs.com/controllers#routing)
    */
   path?: string;
 }
 
-export function Controller();
-export function Controller(prefix: string);
-export function Controller(options: ControllerOptions);
 /**
  * Decorator that marks a class as a Nest controller that can receive inbound
  * requests and produce responses.
  *
- * HTTP Controllers optionally accept configuration
- * metadata that determines route paths that route handlers in the class
- * respond to, and lifetime [scope](https://docs.nestjs.com/fundamentals/injection-scopes#usage).
- *
  * An HTTP Controller responds to inbound HTTP Requests and produces HTTP Responses.
  * It defines a class that provides the context for one or more related route
  * handlers that correspond to HTTP request methods and associated routes
- * (e.g., `GET /api/profile`, `POST /user/resume`).
+ * for example `GET /api/profile`, `POST /user/resume`.
  *
- * A Microservice Controller responds to Requests and Responses, as well as events,
- * running over a variety of transports [(read more here)](https://docs.nestjs.com/microservices/basics). It defines
- * a class that provides a context for one or more message or event handlers.
+ * A Microservice Controller responds to requests as well as events, running over
+ * a variety of transports [(read more here)](https://docs.nestjs.com/microservices/basics).
+ * It defines a class that provides a context for one or more message or event
+ * handlers.
  *
  * @see [Controllers](https://docs.nestjs.com/controllers)
  * @see [Microservices](https://docs.nestjs.com/microservices/basics#request-response)
  *
- * @usageNotes
+ * @publicApi
+ */
+export function Controller();
+
+/**
+ * Decorator that marks a class as a Nest controller that can receive inbound
+ * requests and produce responses.
  *
- * ### Setting controller options
- * The controller decorator takes an optional options object in plain JSON format.
- * This object can take properties `path` and `scope`.
+ * An HTTP Controller responds to inbound HTTP Requests and produces HTTP Responses.
+ * It defines a class that provides the context for one or more related route
+ * handlers that correspond to HTTP request methods and associated routes
+ * for example `GET /api/profile`, `POST /user/resume`.
  *
- * ### Setting the default route path prefix
- * The following example sets `cats` as the default route path prefix for all route
- * handlers in this controller. When simply passing a route prefix, you can pass
- * it as a string as shown in the example below.
+ * A Microservice Controller responds to requests as well as events, running over
+ * a variety of transports [(read more here)](https://docs.nestjs.com/microservices/basics).
+ * It defines a class that provides a context for one or more message or event
+ * handlers.
  *
- * ```typescript
- *  @Controller('cats')
- *  export class CatsController {
- *    @Get()
- *    findall(): string {
- *      return 'This action returns all cats';
- *    }
- *  }
- * ```
- * This route handler will respond to the request
- * `GET /cats`
+ * @param {string} prefix - string that defines a `route path prefix`.  The prefix
+ * is pre-pended to the path specified in any request decorator in the class.
  *
- * ### Setting the injection scope
- * The following example sets the scope for all requests in the controller
- * to request-scoped. Each request will cause Nest to create a new instance of
- * the controller.
- * ```typescript
- *  @Controller({
- *    path: 'cats',
- *    scope: Scope.REQUEST,
- *  })
- *  export class CatsController { ... }
- * ```
+ * @see [Routing](https://docs.nestjs.com/controllers#routing)
+ * @see [Controllers](https://docs.nestjs.com/controllers)
+ * @see [Microservices](https://docs.nestjs.com/microservices/basics#request-response)
  *
- * [Read more about scopes here.](https://docs.nestjs.com/fundamentals/injection-scopes)
+ * @publicApi
+ */
+export function Controller(prefix: string);
+
+/**
+ * Decorator that marks a class as a Nest controller that can receive inbound
+ * requests and produce responses.
+ *
+ * An HTTP Controller responds to inbound HTTP Requests and produces HTTP Responses.
+ * It defines a class that provides the context for one or more related route
+ * handlers that correspond to HTTP request methods and associated routes
+ * for example `GET /api/profile`, `POST /user/resume`.
+ *
+ * A Microservice Controller responds to requests as well as events, running over
+ * a variety of transports [(read more here)](https://docs.nestjs.com/microservices/basics).
+ * It defines a class that provides a context for one or more message or event
+ * handlers.
+ *
+ * @param {object} options - configuration object specifying:
+ *
+ * - `scope` - symbol that determines the lifetime of a Controller instance.
+ * [See Scope](https://docs.nestjs.com/fundamentals/injection-scopes#usage) for
+ * more details.
+ * - `prefix` - string that defines a `route path prefix`.  The prefix
+ * is pre-pended to the path specified in any request decorator in the class.
+ *
+ * @see [Routing](https://docs.nestjs.com/controllers#routing)
+ * @see [Controllers](https://docs.nestjs.com/controllers)
+ * @see [Microservices](https://docs.nestjs.com/microservices/basics#request-response)
+ *
+ * @publicApi
+ */
+export function Controller(options: ControllerOptions);
+
+/**
+ * Decorator that marks a class as a Nest controller that can receive inbound
+ * requests and produce responses.
+ *
+ * Accepts either a string specifying a `route path prefix` or a configuration
+ *  metadata object that can specify:
+ * - `route path prefix` - string that defines a `route path prefix`.  The prefix
+ * is pre-pended to the path specified in any request decorator in the class.
+ * - `scope` - symbol that determines the lifetime of a Controller instance.
+ * See [Scope](https://docs.nestjs.com/fundamentals/injection-scopes#usage) for
+ * more details.
+ *
+ * An HTTP Controller responds to inbound HTTP Requests and produces HTTP Responses.
+ * It defines a class that provides the context for one or more related route
+ * handlers that correspond to HTTP request methods and associated routes
+ * for example `GET /api/profile`, `POST /user/resume`
+ *
+ * A Microservice Controller responds to requests as well as events, running over
+ * a variety of transports [(read more here)](https://docs.nestjs.com/microservices/basics).
+ * It defines a class that provides a context for one or more message or event
+ * handlers.
+ *
+ * @see [Routing](https://docs.nestjs.com/controllers#routing)
+ * @see [Controllers](https://docs.nestjs.com/controllers)
+ * @see [Microservices](https://docs.nestjs.com/microservices/basics#request-response)
  *
  * @publicApi
  */
