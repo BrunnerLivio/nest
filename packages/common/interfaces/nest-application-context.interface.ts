@@ -4,10 +4,9 @@ import { Abstract } from './abstract.interface';
 import { Type } from './type.interface';
 
 /**
- * @publicApi
- *
- * @description
  * Interface defining NestApplicationContext.
+ *
+ * @publicApi
  */
 export interface INestApplicationContext {
   /**

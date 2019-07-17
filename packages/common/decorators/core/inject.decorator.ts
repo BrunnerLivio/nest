@@ -6,8 +6,9 @@ import { isFunction, isUndefined } from '../../utils/shared.utils';
 
 /**
  * Decorator that marks a constructor parameter as a target for
- * [Dependency Injection (DI)](https://docs.nestjs.com/providers#dependency-injection). Takes a single
- * required parameter which is the
+ * [Dependency Injection (DI)](https://docs.nestjs.com/providers#dependency-injection).
+ *
+ * Takes a single required parameter which is the
  * [injection token](https://docs.nestjs.com/fundamentals/custom-providers). The injection token serves
  * as the lookup key for the [provider](https://docs.nestjs.com/providers) that will be injected
  * (assigned to the constructor parameter).
@@ -31,52 +32,6 @@ import { isFunction, isUndefined } from '../../utils/shared.utils';
  * @see [Custom Providers](https://docs.nestjs.com/fundamentals/custom-providers)
  * @see [Injection Scopes](https://docs.nestjs.com/fundamentals/injection-scopes)
  *
- * @usageNotes
- *
- * #### Injecting with a type (class name)
- *
- * ```typescript
- * import { Inject } from '@nestjs/common';
- * import { ConfigService } from './config.service';
- *
- * export class CatsService {
- *   constructor(@Inject(ConfigService) private readonly configService) {}
- * }
- * ```
- *
- * The above is equivalent to the conventional constructor injection syntax:
- * ```typescript
- * import { ConfigService } from './config.service';
- *
- * export class CatsService {
- *   constructor(private readonly configService: ConfigService) {}
- * }
- * ```
- * #### Injecting with a string
- *
- * Assume we've registered a provider with the string `'CONNECTION'` as follows:
- *
- * ```typescript
- * import { connection } from './connection';
- * const connectionProvider = {
- *   provide: 'CONNECTION',
- *   useValue: connection,
- * };
- *
- * @Module({
- *  providers: [connectionProvider],
- * })
- * export class ApplicationModule {}
- * ```
- * As a result, we now have a provider bound to the DI container using the
- * injection token `'CONNECTION'`.  This provider can be injected as follows:
- *
- * ```typescript
- * @Injectable()
- * export class CatsRepository {
- *   constructor(@Inject('CONNECTION') connection: Connection) {}
- * }
- * ```
  * @publicApi
  */
 

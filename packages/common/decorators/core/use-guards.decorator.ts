@@ -16,26 +16,6 @@ import { validateEach } from '../../utils/validate-each.util';
  *
  * @see [Guards](https://docs.nestjs.com/guards)
  *
- * @usageNotes
- *
- * ### Passing a guard by type
- * In this example, we pass a guard type, which will delegate instantiating
- * the guard to the Nest framework, and will allow Dependency Injection.
- *
- * ```typescript
- * @Controller('cats')
- * @UseGuards(RolesGuard)
- * export class CatsController {}
- * ```
- *
- * ### Passing a guard instance
- * It's also possible to pass an instance of a guard directly to the decorator.
- *
- * ```typescript
- * @Controller('cats')
- * @UseGuards(new RolesGuard())
- * export class CatsController {}
- * ```
  * @publicApi
  */
 export function UseGuards(...guards: (CanActivate | Function)[]) {

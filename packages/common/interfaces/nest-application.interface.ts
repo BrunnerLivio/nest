@@ -8,10 +8,9 @@ import { INestApplicationContext } from './nest-application-context.interface';
 import { WebSocketAdapter } from './websockets/web-socket-adapter.interface';
 
 /**
- * @publicApi
- *
- * @description
  * Interface defining the core NestApplication object.
+ *
+ * @publicApi
  */
 export interface INestApplication extends INestApplicationContext {
   /**

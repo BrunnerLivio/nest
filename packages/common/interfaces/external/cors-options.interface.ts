@@ -4,6 +4,8 @@
  * err [object], allow [bool]) as the second.
  *
  * @see https://github.com/expressjs/cors
+ *
+ * @publicApi
  */
 export type CustomOrigin = (
   requestOrigin: string,
@@ -11,9 +13,10 @@ export type CustomOrigin = (
 ) => void;
 
 /**
- * @publicApi
+ * Interface describing CORS options that can be set.
  *
  * @see https://github.com/expressjs/cors
+ * @publicApi
  */
 export interface CorsOptions {
   /**
