@@ -2,17 +2,16 @@ import { INestApplication } from '@nestjs/common';
 import { ServeStaticOptions } from './serve-static-options.interface';
 
 /**
- * @publicApi
- *
- * @description
  * Interface describing methods on NestExpressApplication.
  *
  * @see [Platform](https://docs.nestjs.com/first-steps#platform)
+ *
+ * @publicApi
  */
 export interface NestExpressApplication extends INestApplication {
   /**
    * A wrapper function around native `express.set()` method.
-   * Example `app.set('trust proxy', 'loopback')`
+   * Example: `app.set('trust proxy', 'loopback')`
    *
    * @returns {this}
    */
@@ -20,7 +19,7 @@ export interface NestExpressApplication extends INestApplication {
 
   /**
    * A wrapper function around native `express.engine()` method.
-   * Example `app.engine('mustache', mustacheExpress())`
+   * Example: `app.engine('mustache', mustacheExpress())`
    *
    * @returns {this}
    */

@@ -1,5 +1,7 @@
 /**
  * Methods to obtain request and response objects.
+ *
+ * @publicApi
  */
 export interface HttpArgumentsHost {
   /**
@@ -14,6 +16,8 @@ export interface HttpArgumentsHost {
 
 /**
  * Methods to obtain WebSocket data and client objects.
+ *
+ * @publicApi
  */
 export interface WsArgumentsHost {
   /**
@@ -28,6 +32,8 @@ export interface WsArgumentsHost {
 
 /**
  * Methods to obtain RPC data object.
+ *
+ * @publicApi
  */
 export interface RpcArgumentsHost {
   /**
@@ -37,13 +43,11 @@ export interface RpcArgumentsHost {
 }
 
 /**
- * @publicApi
- *
- * @description
  * Provides methods for retrieving the arguments being passed to a handler.
  * Allows choosing the appropriate execution context (e.g., Http, RPC, or
  * WebSockets) to retrieve the arguments from.
  *
+ * @publicApi
  */
 export interface ArgumentsHost {
   /**
@@ -52,7 +56,7 @@ export interface ArgumentsHost {
   getArgs<T extends Array<any> = any[]>(): T;
   /**
    * Returns a particular argument by index.
-   * @param index
+   * @param index - index of argument to retrieve
    */
   getArgByIndex<T = any>(index: number): T;
   /**

@@ -83,7 +83,7 @@ export const UploadedFiles: () => ParameterDecorator = createRouteParamDecorator
  *
  * `property` - optional name of single header property to extract.
  *
- * Example: `async update(@Headers() headers)`
+ * @example: `async update(@Headers() headers)`
  *
  * @see [Request object](https://docs.nestjs.com/controllers#request-object)
  *
@@ -106,7 +106,10 @@ export function Query(
  * property from the `req` object and populates the decorated
  * parameter with the value of `query`.
  *
- * Example: `async find(@Query() query: string)`
+ * For example:
+ * ```typescript
+ * async find(@Query() query: string)
+ * ```
  *
  * @see [Request object](https://docs.nestjs.com/controllers#request-object)
  *
@@ -135,7 +138,10 @@ export function Body(
  * property from the `req` object and populates the decorated
  * parameter with the value of `body`.
  *
- * Example: `async create(@Body() createCatDto: CreateCatDto)`
+ * For example:
+ * ```typescript
+ * async create(@Body() createCatDto: CreateCatDto)
+ * ```
  *
  * @see [Request object](https://docs.nestjs.com/controllers#request-object)
  *

@@ -14,7 +14,14 @@ import { validateEach } from '../../utils/validate-each.util';
  * When `@UseGuards` is used at the individual handler level, the guard
  * will apply only to that specific method.
  *
+ * The decorator takes a single guard instance or class, or a
+ * list of guard instances or classes.
+ *
  * @see [Guards](https://docs.nestjs.com/guards)
+ *
+ * @usageNotes
+ * Guards can also be set up globally for all controllers and routes
+ * using `app.useGlobalGuards()`.  [See here for details](https://docs.nestjs.com/guards#binding-guards)
  *
  * @publicApi
  */
