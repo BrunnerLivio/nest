@@ -1,7 +1,14 @@
 /**
- * Binds parameter decorators to the method
- * Useful when the language doesn't provide a 'Parameter Decorators' feature (vanilla JavaScript)
- * @param  ...decorators
+ * Binds parameter decorators to the decorated method.
+ *
+ * Useful when the language doesn't provide a 'Parameter Decorators' feature
+ * (i.e., vanilla JavaScript)
+ *
+ * Accepts a list of decorators as parameters.
+ *
+ * Example: `@Bind(Req())`
+ *
+ * @publicApi
  */
 export function Bind(...decorators: any[]): MethodDecorator {
   return <T>(

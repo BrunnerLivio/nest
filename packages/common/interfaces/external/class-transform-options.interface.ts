@@ -1,6 +1,9 @@
 /**
  * Options to be passed during transformation.
+ *
  * @see https://github.com/typestack/class-transformer
+ *
+ * @publicApi
  */
 export interface ClassTransformOptions {
   /**

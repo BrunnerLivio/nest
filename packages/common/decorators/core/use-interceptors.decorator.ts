@@ -25,7 +25,6 @@ import { validateEach } from '../../utils/validate-each.util';
  *
  * @publicApi
  */
-
 export function UseInterceptors(
   ...interceptors: (NestInterceptor | Function)[]
 ) {

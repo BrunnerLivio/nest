@@ -98,7 +98,7 @@ export function Controller(options: ControllerOptions);
  * requests and produce responses.
  *
  * Accepts either a string specifying a `route path prefix` or a configuration
- *  metadata object that can specify:
+ * metadata object that can specify:
  * - `route path prefix` - string that defines a `route path prefix`.  The prefix
  * is pre-pended to the path specified in any request decorator in the class.
  * - `scope` - symbol that determines the lifetime of a Controller instance.

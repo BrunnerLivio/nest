@@ -6,7 +6,7 @@ import { isUndefined } from '../../utils/shared.utils';
 
 /**
  * Parameter decorator for an injected dependency marking the
- * dependency as an optional.
+ * dependency as optional.
  *
  * For example:
  * ```typescript

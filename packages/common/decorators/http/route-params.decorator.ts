@@ -58,32 +58,110 @@ const createPipesRouteParamDecorator = (paramtype: RouteParamtypes) => (
   );
 };
 
+/**
+ * Route handler parameter decorator. Extracts the `Request`
+ * object from the underlying platform and populates the decorated
+ * parameter with the value of `Request`.
+ *
+ * Example: `logout(@Request() req)`
+ *
+ * @see [Request object](https://docs.nestjs.com/controllers#request-object)
+ *
+ * @publicApi
+ */
 export const Request: () => ParameterDecorator = createRouteParamDecorator(
   RouteParamtypes.REQUEST,
 );
+
+/**
+ * Route handler parameter decorator. Extracts the `Response`
+ * object from the underlying platform and populates the decorated
+ * parameter with the value of `Response`.
+ *
+ * Example: `logout(@Response() res)`
+ *
+ * @see [Request object](https://docs.nestjs.com/controllers#request-object)
+ *
+ * @publicApi
+ */
 export const Response: () => ParameterDecorator = createRouteParamDecorator(
   RouteParamtypes.RESPONSE,
 );
+
+/**
+ * Route handler parameter decorator. Extracts reference to the `Next` function
+ * from the underlying platform and populates the decorated
+ * parameter with the value of `Next`.
+ *
+ * @see [Request object](https://docs.nestjs.com/controllers#request-object)
+ *
+ * @publicApi
+ */
 export const Next: () => ParameterDecorator = createRouteParamDecorator(
   RouteParamtypes.NEXT,
 );
+
+/**
+ * Route handler parameter decorator. Extracts the `Session` object
+ * from the underlying platform and populates the decorated
+ * parameter with the value of `Session`.
+ *
+ * @see [Request object](https://docs.nestjs.com/controllers#request-object)
+ *
+ * @publicApi
+ */
 export const Session: () => ParameterDecorator = createRouteParamDecorator(
   RouteParamtypes.SESSION,
 );
+
+/**
+ * Route handler parameter decorator. Extracts the `file` object
+ * and populates the decorated parameter with the value of `file`.
+ * Used in conjunction with
+ * [multer middleware](https://github.com/expressjs/multer).
+ *
+ * For example:
+ * ```typescript
+ * uploadFile(@UploadedFile() file) {
+ *   console.log(file);
+ * }
+ * ```
+ * @see [Request object](https://docs.nestjs.com/techniques/file-upload)
+ *
+ * @publicApi
+ */
 export const UploadedFile: (
   fileKey?: string,
 ) => ParameterDecorator = createRouteParamDecorator(RouteParamtypes.FILE);
+
+/**
+ * Route handler parameter decorator. Extracts the `files` object
+ * and populates the decorated parameter with the value of `files`.
+ * Used in conjunction with
+ * [multer middleware](https://github.com/expressjs/multer).
+ *
+ * For example:
+ * ```typescript
+ * uploadFile(@UploadedFiles() files) {
+ *   console.log(files);
+ * }
+ * ```
+ * @see [Request object](https://docs.nestjs.com/techniques/file-upload)
+ *
+ * @publicApi
+ */
 export const UploadedFiles: () => ParameterDecorator = createRouteParamDecorator(
   RouteParamtypes.FILES,
 );
+
 /**
  * Route handler parameter decorator. Extracts the `headers`
  * property from the `req` object and populates the decorated
  * parameter with the value of `headers`.
  *
- * `property` - optional name of single header property to extract.
+ * Takes optional parameter `property` - name of single header property to extract.
  *
- * @example: `async update(@Headers() headers)`
+ * For example: `async update(@Headers('Cache-Controle') cacheControl: string)`
  *
  * @see [Request object](https://docs.nestjs.com/controllers#request-object)
  *
@@ -106,9 +184,12 @@ export function Query(
  * property from the `req` object and populates the decorated
  * parameter with the value of `query`.
  *
+ * Takes optional parameter `property` - name of single property to extract
+ * from the `query` object
+ *
  * For example:
  * ```typescript
- * async find(@Query() query: string)
+ * async find(@Query('user') user: string)
  * ```
  *
  * @see [Request object](https://docs.nestjs.com/controllers#request-object)
@@ -138,9 +219,12 @@ export function Body(
  * property from the `req` object and populates the decorated
  * parameter with the value of `body`.
  *
+ * Takes optional parameter `property` - name of single property to extract
+ * from the `body` object
+ *
  * For example:
  * ```typescript
- * async create(@Body() createCatDto: CreateCatDto)
+ * async create(@Body('role') role: string)
  * ```
  *
  * @see [Request object](https://docs.nestjs.com/controllers#request-object)
@@ -165,6 +249,27 @@ export function Param(
   property: string,
   ...pipes: (Type<PipeTransform> | PipeTransform)[]
 ): ParameterDecorator;
+/**
+ * Route handler parameter decorator. Extracts the `params`
+ * property from the `req` object and populates the decorated
+ * parameter with the value of `params`.
+ *
+ * Takes optional parameter `property` - name of single property to extract from
+ * the `params` object
+ *
+ * For example, extracting all params:
+ * ```typescript
+ * findOne(@Param() params)
+ * ```
+ *
+ * For example, extracting a single param:
+ * ```typescript
+ * findOne(@Param('id') id)
+ * ```
+ * @see [Request object](https://docs.nestjs.com/controllers#request-object)
+ *
+ * @publicApi
+ */
 export function Param(
   property?: string | (Type<PipeTransform> | PipeTransform),
   ...pipes: (Type<PipeTransform> | PipeTransform)[]
