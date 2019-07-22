@@ -56,7 +56,7 @@ export interface ArgumentsHost {
   getArgs<T extends Array<any> = any[]>(): T;
   /**
    * Returns a particular argument by index.
-   * @param index - index of argument to retrieve
+   * @param index index of argument to retrieve
    */
   getArgByIndex<T = any>(index: number): T;
   /**
