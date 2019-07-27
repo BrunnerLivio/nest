@@ -5,7 +5,7 @@ import { LoggerService } from '../services/logger.service';
  */
 export class NestApplicationContextOptions {
   /**
-   * specify the logger to use
+   * Specifies the logger to use.  Pass `false` to turn off logging.
    */
   logger?: LoggerService | boolean;
 }
