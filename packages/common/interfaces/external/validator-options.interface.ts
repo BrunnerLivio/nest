@@ -25,7 +25,7 @@ export interface ValidatorOptions {
   groups?: string[];
   /**
    * If set to true, the validation will not use default messages.
-   * Error message always will be undefined if its not explicitly set.
+   * Error message will always be undefined if it's not explicitly set.
    */
   dismissDefaultMessages?: boolean;
   /**
@@ -42,7 +42,7 @@ export interface ValidatorOptions {
     value?: boolean;
   };
   /**
-   * Setting true will cause fail validation of unknown objects.
+   * Setting true will cause failed validation of unknown objects.
    */
   forbidUnknownValues?: boolean;
 }

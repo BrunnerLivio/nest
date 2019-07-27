@@ -1,7 +1,7 @@
 /**
  * Binds parameter decorators to the decorated method.
  *
- * Useful when the language doesn't provide a 'Parameter Decorators' feature
+ * Useful when the language doesn't provide a 'Parameter Decorator' feature
  * (i.e., vanilla JavaScript)
  *
  * Accepts a list of decorators as parameters.

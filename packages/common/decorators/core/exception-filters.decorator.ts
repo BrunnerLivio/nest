@@ -43,8 +43,8 @@ const defineFiltersMetadata = (...filters: (Function | ExceptionFilter)[]) => {
  * When `@UseFilters` is used at the individual handler level, the filter
  * will apply only to that specific method.
  *
- * The decorator takes a single exception filter instance or class, or a
- * list of exception filter instances or classes.
+ * @param filters exception filter instance or class, or a list of exception
+ * filter instances or classes.
  *
  * @see [Exception filters](https://docs.nestjs.com/exception-filters)
  *

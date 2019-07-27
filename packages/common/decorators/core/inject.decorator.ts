@@ -8,16 +8,6 @@ import { isFunction, isUndefined } from '../../utils/shared.utils';
  * Decorator that marks a constructor parameter as a target for
  * [Dependency Injection (DI)](https://docs.nestjs.com/providers#dependency-injection).
  *
- * Takes a single required parameter which is the
- * [injection token](https://docs.nestjs.com/fundamentals/custom-providers). The injection token serves
- * as the lookup key for the [provider](https://docs.nestjs.com/providers) that will be injected
- * (assigned to the constructor parameter).
- *
- * Injection tokens can be types (class names), strings or symbols. This depends
- * on how the provider with which it is associated was defined. Providers
- * defined with the `@Injectable()` decorator use the class name. Custom
- * Providers may use strings or symbols as the injection token.
- *
  * Any injected provider must be visible within the module scope (loosely
  * speaking, the containing module) of the class it is being injected into. This
  * can be done by:
@@ -27,6 +17,15 @@ import { isFunction, isUndefined } from '../../utils/shared.utils';
  *   module scope of the class being injected into
  * - exporting the provider from a module that is marked as global using the
  *   `@Global()` decorator
+ *
+ * #### Injection tokens
+ * Can be *types* (class names), *strings* or *symbols*. This depends on how the
+ * provider with which it is associated was defined. Providers defined with the
+ * `@Injectable()` decorator use the class name. Custom Providers may use strings
+ * or symbols as the injection token.
+ *
+ * @param token lookup key for the provider to be injected (assigned to the constructor
+ * parameter).
  *
  * @see [Providers](https://docs.nestjs.com/providers)
  * @see [Custom Providers](https://docs.nestjs.com/fundamentals/custom-providers)

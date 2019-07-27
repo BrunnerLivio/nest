@@ -4,12 +4,11 @@ import { extendArrayMetadata } from '../../utils/extend-metadata.util';
 /**
  * Sets a response header.
  *
- * Requires two parameters:
- * - `name` - string to be used for header name
- * - `value` - string to be used for header value
- *
  * For example:
  * `@Header('Cache-Control', 'none')`
+ *
+ * @param name string to be used for header name
+ * @param value string to be used for header value
  *
  * @see [Headers](https://docs.nestjs.com/controllers#headers)
  *

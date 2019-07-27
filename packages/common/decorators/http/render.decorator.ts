@@ -5,7 +5,9 @@ import { RENDER_METADATA } from '../../constants';
  *
  * For example: `@Render('index')`
  *
- * @see [Example](https://github.com/nestjs/nest/blob/master/sample/15-mvc/src/app.controller.ts)
+ * @param template name of the render engine template file
+ *
+ * @see [Model-View-Controller](https://docs.nestjs.com/techniques.mvc)
  * @publicApi
  */
 export function Render(template: string): MethodDecorator {

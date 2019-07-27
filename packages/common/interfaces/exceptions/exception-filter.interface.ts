@@ -9,7 +9,7 @@ import { ArgumentsHost } from '../features/arguments-host.interface';
  */
 export interface ExceptionFilter<T = any> {
   /**
-   * Method to implement a custom exception filter.  Called with two parameters
+   * Method to implement a custom exception filter.
    *
    * @param exception the instance of the exception being handled
    * @param host used to access an array of arguments for

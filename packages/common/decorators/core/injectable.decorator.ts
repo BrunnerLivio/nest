@@ -13,9 +13,10 @@ import { Type } from './../../interfaces/type.interface';
 export interface InjectableOptions extends ScopeOptions {}
 
 /**
- * Decorator that marks a class as a [provider](https://docs.nestjs.com/providers). Providers can be
- * injected into other classes via constructor parameter injection using Nest's
- * built-in [Dependency Injection (DI)](https://docs.nestjs.com/providers#dependency-injection) system.
+ * Decorator that marks a class as a [provider](https://docs.nestjs.com/providers).
+ * Providers can be injected into other classes via constructor parameter injection
+ * using Nest's built-in [Dependency Injection (DI)](https://docs.nestjs.com/providers#dependency-injection)
+ * system.
  *
  * When injecting a provider, it must be visible within the module scope (loosely
  * speaking, the containing module) of the class it is being injected into. This
@@ -30,6 +31,8 @@ export interface InjectableOptions extends ScopeOptions {}
  * Providers can also be defined in a more explicit and imperative form using
  * various [custom provider](https://docs.nestjs.com/fundamentals/custom-providers) techniques that expose
  * more capabilities of the DI system.
+ *
+ * @param options options specifying scope of injectable
  *
  * @see [Providers](https://docs.nestjs.com/providers)
  * @see [Custom Providers](https://docs.nestjs.com/fundamentals/custom-providers)

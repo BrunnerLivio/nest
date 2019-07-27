@@ -52,7 +52,7 @@ export function Controller();
  * It defines a class that provides a context for one or more message or event
  * handlers.
  *
- * @param {string} prefix - string that defines a `route path prefix`.  The prefix
+ * @param {string} prefix string that defines a `route path prefix`.  The prefix
  * is pre-pended to the path specified in any request decorator in the class.
  *
  * @see [Routing](https://docs.nestjs.com/controllers#routing)
@@ -77,7 +77,7 @@ export function Controller(prefix: string);
  * It defines a class that provides a context for one or more message or event
  * handlers.
  *
- * @param {object} options - configuration object specifying:
+ * @param {object} options configuration object specifying:
  *
  * - `scope` - symbol that determines the lifetime of a Controller instance.
  * [See Scope](https://docs.nestjs.com/fundamentals/injection-scopes#usage) for
@@ -97,14 +97,6 @@ export function Controller(options: ControllerOptions);
  * Decorator that marks a class as a Nest controller that can receive inbound
  * requests and produce responses.
  *
- * Accepts either a string specifying a `route path prefix` or a configuration
- * metadata object that can specify:
- * - `route path prefix` - string that defines a `route path prefix`.  The prefix
- * is pre-pended to the path specified in any request decorator in the class.
- * - `scope` - symbol that determines the lifetime of a Controller instance.
- * See [Scope](https://docs.nestjs.com/fundamentals/injection-scopes#usage) for
- * more details.
- *
  * An HTTP Controller responds to inbound HTTP Requests and produces HTTP Responses.
  * It defines a class that provides the context for one or more related route
  * handlers that correspond to HTTP request methods and associated routes
@@ -115,9 +107,14 @@ export function Controller(options: ControllerOptions);
  * It defines a class that provides a context for one or more message or event
  * handlers.
  *
+ * @param prefixOrOptions a `route path prefix` or a `ControllerOptions` object.
+ * A `route path prefix` is pre-pended to the path specified in any request decorator
+ * in the class.
+ *
  * @see [Routing](https://docs.nestjs.com/controllers#routing)
  * @see [Controllers](https://docs.nestjs.com/controllers)
  * @see [Microservices](https://docs.nestjs.com/microservices/basics#request-response)
+ * @see [Scope](https://docs.nestjs.com/fundamentals/injection-scopes#usage)
  *
  * @publicApi
  */
