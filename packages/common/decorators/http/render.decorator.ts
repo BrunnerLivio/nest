@@ -8,6 +8,7 @@ import { RENDER_METADATA } from '../../constants';
  * @param template name of the render engine template file
  *
  * @see [Model-View-Controller](https://docs.nestjs.com/techniques.mvc)
+ *
  * @publicApi
  */
 export function Render(template: string): MethodDecorator {

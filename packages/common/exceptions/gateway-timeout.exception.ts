@@ -15,11 +15,8 @@ export class GatewayTimeoutException extends HttpException {
    *
    * @example
    * `throw new GatewayTimeoutException()`
-   * @param message string or object describing the error condition.
-   * @param error HTTP response status code
    *
    * @usageNotes
-   *
    * #### JSON responses
    * The `message` parameter defines the JSON response body.  Pass `string` to
    * customize the error message.
@@ -29,6 +26,9 @@ export class GatewayTimeoutException extends HttpException {
    *
    * #### HTTP Responses
    * Pass `error` string to define the HTTP response status code.
+   *
+   * @param message string or object describing the error condition.
+   * @param error HTTP response status code
    */
   constructor(message?: string | object | any, error = 'Gateway Timeout') {
     super(

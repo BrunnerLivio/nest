@@ -1,7 +1,9 @@
 import { AbstractHttpAdapter } from '../adapters/http-adapter';
 
 /**
- * Defines the `HttpAdapterHost` object.  This object wraps the underlying
+ * Defines the `HttpAdapterHost` object.
+ *
+ * `HttpAdapterHost` wraps the underlying
  * platform-specific `HttpAdapter`.  The `HttpAdapter` is a wrapper around the underlying
  * native HTTP server library (e.g., Express).  The `HttpAdapterHost` object
  * provides methods to `get` and `set` the underlying HttpAdapter.

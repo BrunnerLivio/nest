@@ -16,11 +16,7 @@ export class PayloadTooLargeException extends HttpException {
    * @example
    * `throw new PayloadTooLargeException()`
    *
-   * @param message string or object describing the error condition.
-   * @param error HTTP response status code
-   *
    * @usageNotes
-   *
    * #### JSON responses
    * The `message` parameter defines the JSON response body.  Pass `string` to
    * customize the error message.
@@ -30,6 +26,9 @@ export class PayloadTooLargeException extends HttpException {
    *
    * #### HTTP Responses
    * Pass `error` string to define the HTTP response status code.
+   *
+   * @param message string or object describing the error condition.
+   * @param error HTTP response status code
    */
   constructor(message?: string | object | any, error = 'Payload Too Large') {
     super(

@@ -8,7 +8,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  * Any attempt to brew coffee with a teapot should result in the error code
  * "418 I'm a teapot". The resulting entity body MAY be short and stout.
  *
- * @see[Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
+ * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
@@ -19,11 +19,7 @@ export class ImATeapotException extends HttpException {
    * @example
    * `throw new BadGatewayException()`
    *
-   * @param message string or object describing the error condition.
-   * @param error HTTP response status code
-   *
    * @usageNotes
-   *
    * #### JSON responses
    * The `message` parameter defines the JSON response body.  Pass `string` to
    * customize the error message.
@@ -33,6 +29,9 @@ export class ImATeapotException extends HttpException {
    *
    * #### HTTP Responses
    * Pass `error` string to define the HTTP response status code.
+   *
+   * @param message string or object describing the error condition.
+   * @param error HTTP response status code
    */
   constructor(message?: string | object | any, error = "I'm a teapot") {
     super(
