@@ -4,12 +4,11 @@ import { Logger } from './../../services/logger.service';
  * Decorator that assigns metadata to the class/function using the
  * specified `key`.
  *
- * @description
  * Requires two parameters:
  * - `key` - a value defining the key under which the metadata is stored
  * - `value[]` - array of metadata values to be associated with `key`
  *
- * This metadata can be reflected using `Reflector` class.
+ * This metadata can be reflected using the `Reflector` class.
  *
  * Example: `@SetMetadata('roles', ['admin'])`
  *

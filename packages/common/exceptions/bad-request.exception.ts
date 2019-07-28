@@ -5,8 +5,6 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Bad Request* type errors.
  *
- * @example
- * `throw new BadRequestException()`
  *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
@@ -14,6 +12,11 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class BadRequestException extends HttpException {
   /**
+   * Instantiate a `BadRequestException` Exception
+   *
+   * @example
+   * `throw new BadRequestException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

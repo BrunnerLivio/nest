@@ -5,15 +5,17 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Unauthorized* type errors.
  *
- * @example
- * `throw new UnauthorizedException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class UnauthorizedException extends HttpException {
   /**
+   * Instantiate an `UnauthorizedException` Exception
+   *
+   * @example
+   * `throw new UnauthorizedException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

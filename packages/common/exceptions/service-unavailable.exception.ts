@@ -5,15 +5,17 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Service Unavailable* type errors.
  *
- * @example
- * `throw new ServiceUnavailableException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class ServiceUnavailableException extends HttpException {
   /**
+   * Instnatiate a `ServiceUnavailableException` Exception
+   *
+   * @example
+   * `throw new ServiceUnavailableException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

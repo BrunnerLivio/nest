@@ -14,7 +14,7 @@ import { validateEach } from '../../utils/validate-each.util';
  * When `@UseInterceptors` is used at the individual handler level, the interceptor
  * will apply only to that specific method.
  *
- * @params interceptors a single interceptor instance or class, or a list of
+ * @param interceptors a single interceptor instance or class, or a list of
  * interceptor instances or classes.
  *
  * @see [Interceptors](https://docs.nestjs.com/interceptors)

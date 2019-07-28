@@ -5,15 +5,17 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Internal Server Error* type errors.
  *
- * @example
- * `throw new InternalServerErrorException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class InternalServerErrorException extends HttpException {
   /**
+   * Instantiate an `InternalServerErrorException` Exception
+   *
+   * @example
+   * `throw new InternalServerErrorException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

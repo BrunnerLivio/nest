@@ -3,8 +3,8 @@ import { isString, isUndefined } from '../../utils/shared.utils';
 import { ScopeOptions } from './../../interfaces/scope-options.interface';
 
 /**
- *
  * Interface defining options that can be passed to `@Controller()` decorator
+ *
  * @publicApi
  */
 export interface ControllerOptions extends ScopeOptions {
@@ -109,7 +109,12 @@ export function Controller(options: ControllerOptions);
  *
  * @param prefixOrOptions a `route path prefix` or a `ControllerOptions` object.
  * A `route path prefix` is pre-pended to the path specified in any request decorator
- * in the class.
+ * in the class. `ControllerOptions` is an options configuration object specifying:
+ * - `scope` - symbol that determines the lifetime of a Controller instance.
+ * [See Scope](https://docs.nestjs.com/fundamentals/injection-scopes#usage) for
+ * more details.
+ * - `prefix` - string that defines a `route path prefix`.  The prefix
+ * is pre-pended to the path specified in any request decorator in the class.
  *
  * @see [Routing](https://docs.nestjs.com/controllers#routing)
  * @see [Controllers](https://docs.nestjs.com/controllers)

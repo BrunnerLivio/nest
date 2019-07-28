@@ -5,15 +5,16 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Forbidden* type errors.
  *
- * @example
- * `throw new ForbiddenException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class ForbiddenException extends HttpException {
   /**
+   * Instantiate a `ForbiddenException` Exception
+   *
+   * @example
+   * `throw new ForbiddenException()`
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

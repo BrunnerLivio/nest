@@ -5,15 +5,17 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Unprocessable Entity* type errors.
  *
- * @example
- * `throw new UnprocessableEntityException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class UnprocessableEntityException extends HttpException {
   /**
+   * Instantiate an `UnprocessableEntityException` Exception
+   *
+   * @example
+   * `throw new UnprocessableEntityException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

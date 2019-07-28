@@ -5,15 +5,17 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Bad Gateway* type errors.
  *
- * @example
- * `throw new BadGatewayException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class BadGatewayException extends HttpException {
   /**
+   * Instantiate a `BadGatewayException` Exception
+   *
+   * @example
+   * `throw new BadGatewayException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

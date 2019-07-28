@@ -5,15 +5,17 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Conflict* type errors.
  *
- * @example
- * `throw new ConflictException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class ConflictException extends HttpException {
   /**
+   * Instantiate a `ConflictException` Exception
+   *
+   * @example
+   * `throw new ConflictException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

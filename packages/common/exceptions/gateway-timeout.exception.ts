@@ -5,15 +5,16 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Gatway Timeout* type errors.
  *
- * @example
- * `throw new GatewayTimeoutException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class GatewayTimeoutException extends HttpException {
   /**
+   * Instantiate a `GatewayTimeoutException` Exception
+   *
+   * @example
+   * `throw new GatewayTimeoutException()`
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

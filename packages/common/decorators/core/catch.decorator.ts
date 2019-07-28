@@ -18,7 +18,6 @@ import { Type } from '../../interfaces';
  *
  * @publicApi
  */
-
 export function Catch(...exceptions: Type<any>[]): ClassDecorator {
   return (target: object) => {
     Reflect.defineMetadata(FILTER_CATCH_EXCEPTIONS, exceptions, target);

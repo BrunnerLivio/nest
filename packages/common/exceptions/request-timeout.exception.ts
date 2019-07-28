@@ -5,15 +5,17 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Request Timeout* type errors.
  *
- * @example
- * `throw new RequestTimeoutException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class RequestTimeoutException extends HttpException {
   /**
+   * Instantiate a `RequestTimeoutException` Exception
+   *
+   * @example
+   * `throw new RequestTimeoutException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

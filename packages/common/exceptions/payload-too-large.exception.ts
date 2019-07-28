@@ -5,15 +5,17 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Payload Too Large* type errors.
  *
- * @example
- * `throw new PayloadTooLargeException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class PayloadTooLargeException extends HttpException {
   /**
+   * Instantiate a `PayloadTooLargeException` Exception
+   *
+   * @example
+   * `throw new PayloadTooLargeException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

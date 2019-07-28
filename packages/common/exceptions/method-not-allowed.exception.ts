@@ -5,15 +5,17 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Method Not Allowed* type errors.
  *
- * @example
- * `throw new MethodNotAllowedException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class MethodNotAllowedException extends HttpException {
   /**
+   * Instantiate a `MethodNotAllowedException` Exception
+   *
+   * @example
+   * `throw new MethodNotAllowedException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

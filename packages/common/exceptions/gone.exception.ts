@@ -5,15 +5,16 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Gone* type errors.
  *
- * @example
- * `throw new GoneException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class GoneException extends HttpException {
   /**
+   * Instantiate a `GoneException` Exception
+   *
+   * @example
+   * `throw new GoneException()`
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

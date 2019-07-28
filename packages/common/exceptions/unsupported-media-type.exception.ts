@@ -5,15 +5,17 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Unsupported Media Type* type errors.
  *
- * @example
- * `throw new UnsupportedMediaTypeException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class UnsupportedMediaTypeException extends HttpException {
   /**
+   * Instantiate an `UnsupportedMediaTypeException` Exception
+   *
+   * @example
+   * `throw new UnsupportedMediaTypeException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

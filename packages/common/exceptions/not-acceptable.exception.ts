@@ -5,15 +5,17 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Not Acceptable* type errors.
  *
- * @example
- * `throw new NotAcceptableException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class NotAcceptableException extends HttpException {
   /**
+   * Instantiate a `NotAcceptableException` Exception
+   *
+   * @example
+   * `throw new NotAcceptableException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

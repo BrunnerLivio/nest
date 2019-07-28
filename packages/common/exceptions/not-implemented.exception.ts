@@ -5,15 +5,17 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Not Implemented* type errors.
  *
- * @example
- * `throw new NotImplementedException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class NotImplementedException extends HttpException {
   /**
+   * Instantiate a `NotImplementedException` Exception
+   *
+   * @example
+   * `throw new NotImplementedException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

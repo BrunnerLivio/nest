@@ -5,15 +5,17 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
 /**
  * Defines an HTTP exception for *Not Found* type errors.
  *
- * @example
- * `throw new NotFoundException()`
- *
  * @see [Base Exceptions](https://docs.nestjs.com/exception-filters#base-exceptions)
  *
  * @publicApi
  */
 export class NotFoundException extends HttpException {
   /**
+   * Instantiate a `NotFoundException` Exception
+   *
+   * @example
+   * `throw new NotFoundException()`
+   *
    * @param message string or object describing the error condition.
    * @param error HTTP response status code
    *

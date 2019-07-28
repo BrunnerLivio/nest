@@ -14,7 +14,7 @@ import { validateEach } from '../../utils/validate-each.util';
  * When `@UsePipes` is used at the individual handler level, the pipe
  * will apply only to that specific method.
  *
- * @params pipes a single pipe instance or class, or a list of pipe instances or
+ * @param pipes a single pipe instance or class, or a list of pipe instances or
  * classes.
  *
  * @see [Pipes](https://docs.nestjs.com/pipes)

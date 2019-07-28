@@ -14,7 +14,7 @@ import { validateEach } from '../../utils/validate-each.util';
  * When `@UseGuards` is used at the individual handler level, the guard
  * will apply only to that specific method.
  *
- * @params guards a single guard instance or class, or a list of guard instances
+ * @param guards a single guard instance or class, or a list of guard instances
  * or classes.
  *
  * @see [Guards](https://docs.nestjs.com/guards)
