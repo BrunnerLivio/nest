@@ -2,7 +2,6 @@ import { BadRequestException } from '../exceptions/bad-request.exception';
 import { PipeTransform } from '../interfaces/features/pipe-transform.interface';
 import { ArgumentMetadata, Injectable } from '../index';
 
-@Injectable()
 /**
  * Defines the built-in ParseInt Pipe
  *
@@ -10,6 +9,7 @@ import { ArgumentMetadata, Injectable } from '../index';
  *
  * @publicApi
  */
+@Injectable()
 export class ParseIntPipe implements PipeTransform<string> {
   /**
    * Method that accesses and performs optional transformation on argument for

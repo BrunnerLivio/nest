@@ -12,9 +12,28 @@ export interface CacheStoreFactory {
   create(args: LiteralObject): CacheStore;
 }
 
+/**
+ * Interface defining Cache Manager configuration options
+ *
+ * @publicApi
+ */
 export interface CacheManagerOptions {
+  /**
+   * store
+   */
   store?: string | CacheStoreFactory;
+  /**
+   * TTL
+   */
   ttl?: number;
+  /**
+   * Max
+   */
   max?: number;
+  /**
+   * Whether value is cacheable
+   *
+   * @param value is this cacheable
+   */
   isCacheableValue?: (value: any) => boolean;
 }
