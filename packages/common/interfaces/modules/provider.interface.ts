@@ -38,11 +38,11 @@ export interface ClassProvider<T = any> {
    */
   provide: string | symbol | Type<any> | Abstract<any> | Function;
   /**
-   * Type (class name) of provider (instance to be injected)m
+   * Type (class name) of provider (instance to be injected)
    */
   useClass: Type<T>;
   /**
-   * Optional enum defining lifetime of the provider that is injectedm
+   * Optional enum defining lifetime of the provider that is injected.
    */
   scope?: Scope;
 }
@@ -103,11 +103,11 @@ export interface FactoryProvider<T = any> {
    */
   useFactory: (...args: any[]) => T;
   /**
-   * Optional list of providers to be injected into the context of the Factory functionm
+   * Optional list of providers to be injected into the context of the Factory function.
    */
   inject?: Array<Type<any> | string | symbol | Abstract<any> | Function>;
   /**
-   * Optional enum defining lifetime of the provider that is returned by the Factory functionm
+   * Optional enum defining lifetime of the provider that is returned by the Factory function.
    */
   scope?: Scope;
 }
@@ -133,7 +133,7 @@ export interface ExistingProvider<T = any> {
    */
   provide: string | symbol | Type<any> | Abstract<any> | Function;
   /**
-   * Provider to be aliased by the Injection tokenm
+   * Provider to be aliased by the Injection token.
    */
   useExisting: any;
 }
