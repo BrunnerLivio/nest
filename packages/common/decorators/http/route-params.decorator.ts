@@ -234,9 +234,11 @@ export function Body(): ParameterDecorator;
  * async create(@Body(new ValidationPipe()) cat: CreateCatDto)
  * ```
  *
- * @param pipes one or more pipes to apply to the bound body parameter
+ * @param pipes one or more pipes - either instances or classes - to apply to
+ * the bound body parameter.
  *
  * @see [Request object](https://docs.nestjs.com/controllers#request-object)
+ * @see [Working with pipes](https://docs.nestjs.com/custom-decorators#working-with-pipes)
  *
  * @publicApi
  */
@@ -256,9 +258,11 @@ export function Body(
  * ```
  *
  * @param property name of single property to extract from the `body` object
- * @param pipes one or more pipes to apply to the bound body parameter
+ * @param pipes one or more pipes - either instances or classes - to apply to
+ * the bound body parameter.
  *
  * @see [Request object](https://docs.nestjs.com/controllers#request-object)
+ * @see [Working with pipes](https://docs.nestjs.com/custom-decorators#working-with-pipes)
  *
  * @publicApi
  */
@@ -279,9 +283,11 @@ export function Body(
  * ```
  *
  * @param property name of single property to extract from the `body` object
- * @param pipes one or more pipes to apply to the bound body parameter
+ * @param pipes one or more pipes - either instances or classes - to apply to
+ * the bound body parameter.
  *
  * @see [Request object](https://docs.nestjs.com/controllers#request-object)
+ * @see [Working with pipes](https://docs.nestjs.com/custom-decorators#working-with-pipes)
  *
  * @publicApi
  */
@@ -319,9 +325,11 @@ export function Param(
  * findOne(@Param('id') id: string)
  * ```
  * @param property name of single property to extract from the `req` object
- * @param pipes one or more pipes to apply to the bound request parameter
+ * @param pipes one or more pipes - either instances or classes - to apply to
+ * the bound parameter.
  *
  * @see [Request object](https://docs.nestjs.com/controllers#request-object)
+ * @see [Working with pipes](https://docs.nestjs.com/custom-decorators#working-with-pipes)
  *
  * @publicApi
  */

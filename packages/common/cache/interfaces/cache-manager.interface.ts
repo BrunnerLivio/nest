@@ -67,10 +67,5 @@ export interface CacheManagerOptions {
    * Maximum number of responses to store in the cache.  Defaults to 100.
    */
   max?: number;
-  /**
-   * Whether value is cacheable.
-   *
-   * @param value
-   */
   isCacheableValue?: (value: any) => boolean;
 }
