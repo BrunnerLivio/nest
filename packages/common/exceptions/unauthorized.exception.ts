@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class UnauthorizedException extends HttpException {
   /**
-   * Instantiate an `UnauthorizedException` Exception
+   * Instantiate an `UnauthorizedException` Exception.
    *
    * @example
    * `throw new UnauthorizedException()`

@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class GatewayTimeoutException extends HttpException {
   /**
-   * Instantiate a `GatewayTimeoutException` Exception
+   * Instantiate a `GatewayTimeoutException` Exception.
    *
    * @example
    * `throw new GatewayTimeoutException()`

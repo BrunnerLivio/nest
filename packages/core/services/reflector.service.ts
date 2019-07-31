@@ -9,7 +9,7 @@ import { Type } from '@nestjs/common';
  */
 export class Reflector {
   /**
-   * Retrieve metadata for a specified key for a specified target
+   * Retrieve metadata for a specified key for a specified target.
    *
    * @example
    * `const roles = this.reflector.get<string[]>('roles', context.getHandler());`
@@ -26,7 +26,7 @@ export class Reflector {
   }
 
   /**
-   * Retrieve metadata for a specified key for a specified set of targets
+   * Retrieve metadata for a specified key for a specified set of targets.
    *
    * @param metadataKey lookup key for metadata to retrieve
    * @param targets context (decorated objects) to retrieve metadata from

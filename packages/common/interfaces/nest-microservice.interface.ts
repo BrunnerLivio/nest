@@ -6,7 +6,7 @@ import { INestApplicationContext } from './nest-application-context.interface';
 import { WebSocketAdapter } from './websockets/web-socket-adapter.interface';
 
 /**
- * Interface describing Microservice Context
+ * Interface describing Microservice Context.
  *
  * @publicApi
  */

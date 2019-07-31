@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class RequestTimeoutException extends HttpException {
   /**
-   * Instantiate a `RequestTimeoutException` Exception
+   * Instantiate a `RequestTimeoutException` Exception.
    *
    * @example
    * `throw new RequestTimeoutException()`

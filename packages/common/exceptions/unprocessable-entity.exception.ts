@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class UnprocessableEntityException extends HttpException {
   /**
-   * Instantiate an `UnprocessableEntityException` Exception
+   * Instantiate an `UnprocessableEntityException` Exception.
    *
    * @example
    * `throw new UnprocessableEntityException()`

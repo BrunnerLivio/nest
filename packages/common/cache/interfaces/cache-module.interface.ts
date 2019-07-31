@@ -32,8 +32,8 @@ export interface CacheModuleAsyncOptions
    */
   useExisting?: Type<CacheOptionsFactory>;
   /**
-   * Injection token resolving to a new provider to be instantiated.  The provider must
-   * implement the `CacheOptionsFactory` interface.
+   * Injection token resolving to a class that will be instantiated as a provider.
+   * The class must implement the `CacheOptionsFactory` interface.
    */
   useClass?: Type<CacheOptionsFactory>;
   /**

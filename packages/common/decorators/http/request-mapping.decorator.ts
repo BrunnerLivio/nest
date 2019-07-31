@@ -31,7 +31,7 @@ const createMappingDecorator = (method: RequestMethod) => (
 };
 
 /**
- * Routes HTTP POST requests to the specified path.
+ * Route handler (method) Decorator. Routes HTTP POST requests to the specified path.
  *
  * @see [Routing](https://docs.nestjs.com/controllers#routing)
  *
@@ -40,7 +40,7 @@ const createMappingDecorator = (method: RequestMethod) => (
 export const Post = createMappingDecorator(RequestMethod.POST);
 
 /**
- * Routes HTTP GET requests to the specified path.
+ * Route handler (method) Decorator. Routes HTTP GET requests to the specified path.
  *
  * @see [Routing](https://docs.nestjs.com/controllers#routing)
  *
@@ -49,7 +49,7 @@ export const Post = createMappingDecorator(RequestMethod.POST);
 export const Get = createMappingDecorator(RequestMethod.GET);
 
 /**
- * Routes HTTP DELETE requests to the specified path.
+ * Route handler (method) Decorator. Routes HTTP DELETE requests to the specified path.
  *
  * @see [Routing](https://docs.nestjs.com/controllers#routing)
  *
@@ -58,7 +58,7 @@ export const Get = createMappingDecorator(RequestMethod.GET);
 export const Delete = createMappingDecorator(RequestMethod.DELETE);
 
 /**
- * Routes HTTP PUT requests to the specified path.
+ * Route handler (method) Decorator. Routes HTTP PUT requests to the specified path.
  *
  * @see [Routing](https://docs.nestjs.com/controllers#routing)
  *
@@ -67,7 +67,7 @@ export const Delete = createMappingDecorator(RequestMethod.DELETE);
 export const Put = createMappingDecorator(RequestMethod.PUT);
 
 /**
- * Routes HTTP PATCH requests to the specified path.
+ * Route handler (method) Decorator. Routes HTTP PATCH requests to the specified path.
  *
  * @see [Routing](https://docs.nestjs.com/controllers#routing)
  *
@@ -76,7 +76,7 @@ export const Put = createMappingDecorator(RequestMethod.PUT);
 export const Patch = createMappingDecorator(RequestMethod.PATCH);
 
 /**
- * Routes HTTP OPTIONS requests to the specified path.
+ * Route handler (method) Decorator. Routes HTTP OPTIONS requests to the specified path.
  *
  * @see [Routing](https://docs.nestjs.com/controllers#routing)
  *
@@ -85,7 +85,7 @@ export const Patch = createMappingDecorator(RequestMethod.PATCH);
 export const Options = createMappingDecorator(RequestMethod.OPTIONS);
 
 /**
- * Routes HTTP HEAD requests to the specified path.
+ * Route handler (method) Decorator. Routes HTTP HEAD requests to the specified path.
  *
  * @see [Routing](https://docs.nestjs.com/controllers#routing)
  *
@@ -94,7 +94,7 @@ export const Options = createMappingDecorator(RequestMethod.OPTIONS);
 export const Head = createMappingDecorator(RequestMethod.HEAD);
 
 /**
- * Routes all HTTP requests to the specified path.
+ * Route handler (method) Decorator. Routes all HTTP requests to the specified path.
  *
  * @see [Routing](https://docs.nestjs.com/controllers#routing)
  *

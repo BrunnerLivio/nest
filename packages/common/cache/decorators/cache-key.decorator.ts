@@ -2,8 +2,8 @@ import { SetMetadata } from '../../decorators';
 import { CACHE_KEY_METADATA } from '../cache.constants';
 
 /**
- * Sets the caching key used to store/retrieve cached items for Web sockets
- * or Microservice based apps.
+ * Decorator that sets the caching key used to store/retrieve cached items for
+ * Web sockets or Microservice based apps.
  *
  * For example:
  * `@CacheKey('events')`

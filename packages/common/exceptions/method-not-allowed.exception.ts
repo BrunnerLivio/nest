@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class MethodNotAllowedException extends HttpException {
   /**
-   * Instantiate a `MethodNotAllowedException` Exception
+   * Instantiate a `MethodNotAllowedException` Exception.
    *
    * @example
    * `throw new MethodNotAllowedException()`

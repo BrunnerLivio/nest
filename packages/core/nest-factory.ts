@@ -42,7 +42,7 @@ export class NestFactoryStatic {
     options?: NestApplicationOptions,
   ): Promise<T>;
   /**
-   * Creates an instance of NestApplication with the specified `httpAdapter`
+   * Creates an instance of NestApplication with the specified `httpAdapter`.
    *
    * @param module Entry (root) application module class
    * @param httpAdapter Adapter to proxy the request/response cycle to
@@ -84,7 +84,7 @@ export class NestFactoryStatic {
   }
 
   /**
-   * Creates an instance of NestMicroservice
+   * Creates an instance of NestMicroservice.
    *
    * @param module Entry (root) application module class
    * @param options Optional microservice configuration
@@ -113,7 +113,7 @@ export class NestFactoryStatic {
   }
 
   /**
-   * Creates an instance of NestApplicationContext
+   * Creates an instance of NestApplicationContext.
    *
    * @param module Entry (root) application module class
    * @param options Optional Nest application configuration

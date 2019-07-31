@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class BadRequestException extends HttpException {
   /**
-   * Instantiate a `BadRequestException` Exception
+   * Instantiate a `BadRequestException` Exception.
    *
    * @example
    * `throw new BadRequestException()`

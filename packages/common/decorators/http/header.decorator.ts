@@ -2,7 +2,7 @@ import { HEADERS_METADATA } from '../../constants';
 import { extendArrayMetadata } from '../../utils/extend-metadata.util';
 
 /**
- * Sets a response header.
+ * Request method Decorator.  Sets a response header.
  *
  * For example:
  * `@Header('Cache-Control', 'none')`

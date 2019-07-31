@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class InternalServerErrorException extends HttpException {
   /**
-   * Instantiate an `InternalServerErrorException` Exception
+   * Instantiate an `InternalServerErrorException` Exception.
    *
    * @example
    * `throw new InternalServerErrorException()`

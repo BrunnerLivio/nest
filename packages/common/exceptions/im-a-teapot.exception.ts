@@ -14,7 +14,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class ImATeapotException extends HttpException {
   /**
-   * Instantiate an `ImATeapotException` Exception
+   * Instantiate an `ImATeapotException` Exception.
    *
    * @example
    * `throw new BadGatewayException()`

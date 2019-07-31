@@ -39,13 +39,14 @@ export interface CacheStoreFactory {
   /**
    * Return a configured cache store.
    *
-   * @param args options for configuring a cache store
+   * @param args Cache manager options received from `CacheModule.register()`
+   * or `CacheModule.registerAcync()`
    */
   create(args: LiteralObject): CacheStore;
 }
 
 /**
- * Interface defining Cache Manager configuration options
+ * Interface defining Cache Manager configuration options.
  *
  * @publicApi
  */
@@ -67,9 +68,9 @@ export interface CacheManagerOptions {
    */
   max?: number;
   /**
-   * Whether value is cacheable
+   * Whether value is cacheable.
    *
-   * @param value is this cacheable
+   * @param value
    */
   isCacheableValue?: (value: any) => boolean;
 }

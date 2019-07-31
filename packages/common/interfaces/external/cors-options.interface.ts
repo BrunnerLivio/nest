@@ -24,7 +24,7 @@ export interface CorsOptions {
    */
   origin?: boolean | string | RegExp | (string | RegExp)[] | CustomOrigin;
   /**
-   * Configures the Access-Control-Allow-Methods CORS header
+   * Configures the Access-Control-Allow-Methods CORS header.
    */
   methods?: string | string[];
   /**
@@ -44,7 +44,7 @@ export interface CorsOptions {
    */
   maxAge?: number;
   /**
-   * Whether to pass the CORS preflight response to the next handler?
+   * Whether to pass the CORS preflight response to the next handler.
    */
   preflightContinue?: boolean;
   /**

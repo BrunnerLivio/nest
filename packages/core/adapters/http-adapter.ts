@@ -2,13 +2,7 @@ import { HttpServer, RequestMethod } from '@nestjs/common';
 import { RequestHandler } from '@nestjs/common/interfaces';
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
 import { NestApplicationOptions } from '@nestjs/common/interfaces/nest-application-options.interface';
-/**
- * @publicApi
- *
- * @description
- *
- * This is the AbstractHttpAdapter
- */
+
 export abstract class AbstractHttpAdapter<
   TServer = any,
   TRequest = any,

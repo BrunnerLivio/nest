@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class UnsupportedMediaTypeException extends HttpException {
   /**
-   * Instantiate an `UnsupportedMediaTypeException` Exception
+   * Instantiate an `UnsupportedMediaTypeException` Exception.
    *
    * @example
    * `throw new UnsupportedMediaTypeException()`

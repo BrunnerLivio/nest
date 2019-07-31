@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class NotFoundException extends HttpException {
   /**
-   * Instantiate a `NotFoundException` Exception
+   * Instantiate a `NotFoundException` Exception.
    *
    * @example
    * `throw new NotFoundException()`

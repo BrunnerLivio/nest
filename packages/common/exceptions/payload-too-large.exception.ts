@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class PayloadTooLargeException extends HttpException {
   /**
-   * Instantiate a `PayloadTooLargeException` Exception
+   * Instantiate a `PayloadTooLargeException` Exception.
    *
    * @example
    * `throw new PayloadTooLargeException()`

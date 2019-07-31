@@ -2,7 +2,7 @@ import { Type } from '../index';
 import { ArgumentsHost } from './arguments-host.interface';
 
 /**
- * Details about the current request pipeline.
+ * Interface describing details about the current request pipeline.
  *
  * @see [Execution Context](https://docs.nestjs.com/guards#execution-context)
  *

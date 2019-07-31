@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class NotAcceptableException extends HttpException {
   /**
-   * Instantiate a `NotAcceptableException` Exception
+   * Instantiate a `NotAcceptableException` Exception.
    *
    * @example
    * `throw new NotAcceptableException()`

@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class ConflictException extends HttpException {
   /**
-   * Instantiate a `ConflictException` Exception
+   * Instantiate a `ConflictException` Exception.
    *
    * @example
    * `throw new ConflictException()`

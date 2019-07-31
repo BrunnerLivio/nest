@@ -1,7 +1,7 @@
 import { RENDER_METADATA } from '../../constants';
 
 /**
- * Defines a template to be rendered by the controller.
+ * Route handler method Decorator.  Defines a template to be rendered by the controller.
  *
  * For example: `@Render('index')`
  *

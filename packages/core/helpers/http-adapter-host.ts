@@ -18,7 +18,7 @@ export class HttpAdapterHost<
   private _httpAdapter: T;
 
   /**
-   * Setter accessor for the underlying `HttpAdapter`
+   * Accessor for the underlying `HttpAdapter`
    *
    * @param httpAdapter reference to the `HttpAdapter` to be set
    */
@@ -27,7 +27,7 @@ export class HttpAdapterHost<
   }
 
   /**
-   * Getter accessor for the underlying `HttpAdapter`
+   * Accessor for the underlying `HttpAdapter`
    *
    * @example
    * `const httpAdapter = adapterHost.httpAdapter;`

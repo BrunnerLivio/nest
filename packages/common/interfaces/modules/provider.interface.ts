@@ -38,7 +38,7 @@ export interface ClassProvider<T = any> {
    */
   provide: string | symbol | Type<any> | Abstract<any> | Function;
   /**
-   * Type (class name) of provider (instance to be injected)
+   * Type (class name) of provider (instance to be injected).
    */
   useClass: Type<T>;
   /**

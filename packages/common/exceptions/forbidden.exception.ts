@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class ForbiddenException extends HttpException {
   /**
-   * Instantiate a `ForbiddenException` Exception
+   * Instantiate a `ForbiddenException` Exception.
    *
    * @example
    * `throw new ForbiddenException()`

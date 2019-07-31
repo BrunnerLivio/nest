@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class NotImplementedException extends HttpException {
   /**
-   * Instantiate a `NotImplementedException` Exception
+   * Instantiate a `NotImplementedException` Exception.
    *
    * @example
    * `throw new NotImplementedException()`

@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class GoneException extends HttpException {
   /**
-   * Instantiate a `GoneException` Exception
+   * Instantiate a `GoneException` Exception.
    *
    * @example
    * `throw new GoneException()`

@@ -9,7 +9,7 @@ import {
 } from './interfaces/cache-module.interface';
 
 /**
- * Module that provides Nest cache-manager
+ * Module that provides Nest cache-manager.
  *
  * @see [Caching](https://docs.nestjs.com/techniques/caching)
  *

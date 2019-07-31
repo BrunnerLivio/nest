@@ -11,7 +11,7 @@ import { createHttpExceptionBody } from '../utils/http-exception-body.util';
  */
 export class ServiceUnavailableException extends HttpException {
   /**
-   * Instnatiate a `ServiceUnavailableException` Exception
+   * Instnatiate a `ServiceUnavailableException` Exception.
    *
    * @example
    * `throw new ServiceUnavailableException()`
